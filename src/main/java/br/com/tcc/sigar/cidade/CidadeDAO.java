@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface CidadeDAO {
 
-    List<Cidade> Listar();
+    List<Cidade> listar();
 
     void atualizar(Cidade cidade);
 

@@ -57,7 +57,7 @@ public class CidadeDAOHibernate implements CidadeDAO{
     
   
     @Override
-    public List<Cidade> Listar() {
+    public List<Cidade> listar() {
         return this.session.createCriteria(Cidade.class).list();
     }
 }

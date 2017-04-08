@@ -38,6 +38,6 @@ public class CidadeRN {
     }
     
     public List<Cidade> listar(){
-        return this.cidadeDAO.Listar();
+        return this.cidadeDAO.listar();
     }
 }

@@ -47,6 +47,7 @@ Contributor(s):
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">filipe</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
-    <mapping class="br.com.tcc.sigar.participante.Participante"/>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <mapping class="br.com.tcc.sigar.cidade.Cidade"/>
   </session-factory>
 </hibernate-configuration>

@@ -21,4 +21,18 @@
     <welcome-file-list>
         <welcome-file>index.jsf</welcome-file>
     </welcome-file-list>
+    
+    <!-- Configuração para o filter do Hibernate, declara o filter ao servidor, 
+         e informa que para toda requisição .jsf seja monitorada pelo Hibernate
+    -->
+    <filter>
+        <filter-name>conexaoFilter</filter-name>
+        <filter-class>br.com.tcc.sigar.web.filter.ConexaoHibernateFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>conexaoFilter</filter-name>
+        <url-pattern>*.jsf</url-pattern>
+    </filter-mapping>
+    
+    <!-- fim do filter do hibernate -->
 </web-app>
