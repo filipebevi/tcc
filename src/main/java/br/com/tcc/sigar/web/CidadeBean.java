@@ -44,6 +44,16 @@ public class CidadeBean {
         return this.lista;
     }
     
+    public String editar(){
+        return "cadastrarcidade";
+    }
+    
+   public String excluir(){
+       CidadeRN cidadeRN=new CidadeRN();
+       cidadeRN.excluir(this.cidade);
+       this.lista=null;
+       return null;
+   }
    
 
     public Cidade getCidade() {

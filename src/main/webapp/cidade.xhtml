@@ -9,101 +9,78 @@
         <title>SIGAR - Cidade</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
-    <body>
+    <body style="margin-left: 100px; margin-right: 100px">
         <h1>Cadastro de Cidades</h1>
         <br/>
     <h:form>
         <p:commandButton action="#{cidadeBean.novo()}" value="Novo"/>
         <p:commandButton action="menuPrincipal" value="Voltar" />
-       
-      
-        
+
     </h:form>
-     <br/>
+    <br/>
     <f:view>
 
-
         <h:form>
-            
+
             <p:dataTable value="#{cidadeBean.lista}" var="item" rows="10"
-                      paginator="true" draggableColumns="true" draggableRows="true">
-                 <f:facet name="header">Lista de cidades cadastradas</f:facet>
-                 
+                         paginator="true" draggableColumns="true" draggableRows="true" >
+                <f:facet name="header">Lista de cidades cadastradas</f:facet>
+
                 <p:column sortBy="#{item.idCidade}"
-                          filterBy="#{item.idCidade}">
+                          filterBy="#{item.idCidade}" style="text-align: center; width: 100px">
                     <f:facet name="header">
                         <h:outputText value="Código"/>
                     </f:facet>
                     <h:outputText value="#{item.idCidade}"/>
                 </p:column>
+
                 <p:column sortBy="#{item.nome}"
-                          filterBy="#{item.nome}">
+                          filterBy="#{item.nome}" style="width: 300px">
                     <f:facet name="header">
                         <h:outputText value="Nome"/>
                     </f:facet>
                     <h:outputText value="#{item.nome}"/>
                 </p:column>
+
                 <p:column sortBy="#{item.uf}"
-                          filterBy="#{item.uf}">
+                          filterBy="#{item.uf}" style="text-align: center; width: 100px">
                     <f:facet name="header">
                         <h:outputText value="Uf"/>
                     </f:facet>
                     <h:outputText value="#{item.uf}"/>
                 </p:column>
-                <p:column sortBy="#{item.ibge}"
-                          filterBy="#{item.ibge}">
+
+                <p:column style="text-align: center; width: 50px ">
                     <f:facet name="header">
-                        <h:outputText value="Ibge"/>
+                        <h:outputText value="Editar"/>
                     </f:facet>
-                    <h:outputText value="#{item.ibge}"/>
+                    <p:commandLink action="#{cidadeBean.editar}">
+                        <p:graphicImage library="imagens" name="editar.png" style="border: 0"/>
+                        <f:setPropertyActionListener target="#{cidadeBean.cidade}" value="#{item}"/>
+                    </p:commandLink>    
                 </p:column>
-                <p:column sortBy="#{item.populacao}"
-                          filterBy="#{item.populacao}">
+
+                <p:column style="text-align: center; width: 50px">
                     <f:facet name="header">
-                        <h:outputText value="Populacao"/>
+                        <h:outputText value="Excluir"/>
                     </f:facet>
-                    <h:outputText value="#{item.populacao}"/>
+                    <p:commandLink action="#{cidadeBean.excluir()}" onclick="if(!confirm('Confirma a exclusao da cidade #{item.nome}?')) return false;">
+                        <p:graphicImage library="imagens" name="excluir.png" style="border: 0"/>
+                        <f:setPropertyActionListener target="#{cidadeBean.cidade}" value="#{item}"/>
+                    </p:commandLink>    
                 </p:column>
-                <p:column sortBy="#{item.area}"
-                          filterBy="#{item.area}">
-                    <f:facet name="header">
-                        <h:outputText value="Area"/>
-                    </f:facet>
-                    <h:outputText value="#{item.area}"/>
-                </p:column>
-                <p:column sortBy="#{item.pib}"
-                          filterBy="#{item.pib}">
-                    <f:facet name="header">
-                        <h:outputText value="Pib"/>
-                    </f:facet>
-                    <h:outputText value="#{item.pib}"/>
-                </p:column>
-                <p:column>
-                    <f:facet name="header">
-                        <h:outputText value="Comentario"/>
-                    </f:facet>
-                    <h:outputText value="#{item.comentario}"/>
-                </p:column>
-                <p:column sortBy="#{item.governador}"
-                          filterBy="#{item.governador}">
-                    <f:facet name="header">
-                        <h:outputText value="Prefeito"/>
-                    </f:facet>
-                    <h:outputText value="#{item.governador}"/>
-                </p:column>
-                 <f:facet name="footer">
-                       <h:outputText value="Existem " />
-                       <h:outputText value="#{fn:length(cidadeBean.lista)}" />
-                       <h:outputText value=" Cidades cadastradas. " />
-                        
-                       
-                   </f:facet>
+
+                <f:facet name="footer">
+                    <h:outputText value="Existem " />
+                    <h:outputText value="#{fn:length(cidadeBean.lista)}" />
+                    <h:outputText value=" Cidades cadastradas. " />
+                </f:facet>
             </p:dataTable>
         </h:form>
     </f:view>
 
 
 
-    
-    </body>
+
+</body>
 </html>
