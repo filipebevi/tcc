@@ -22,6 +22,11 @@
         <welcome-file>index.jsf</welcome-file>
     </welcome-file-list>
     
+    <context-param>
+        <param-name>primefaces.THEME</param-name>
+        <param-value>cupertino</param-value>
+    </context-param>
+    
     <!-- Configuração para o filter do Hibernate, declara o filter ao servidor, 
          e informa que para toda requisição .jsf seja monitorada pelo Hibernate
     -->

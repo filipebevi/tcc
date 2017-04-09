@@ -4,93 +4,96 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
+    
+    
+
+    <ui:composition template="menuPrincipal.xhtml">
+        <ui:define name="conteudo">
+            <f:view>
+                <h:form>
+                   
+
+                    <h:inputHidden value="#{cidadeBean.cidade.idCidade}"/>
+
+                    <h3><h:outputText value="Cadastro de Cidades"/></h3>
+
+                    <p:panelGrid columns="2" styleClass="semBorda" style="font-size: small">
+
+                        <p:outputLabel value="Nome:" for="nome" />
+                        <p:inputText id="nome" value="#{cidadeBean.cidade.nome}" title="Nome" />
+                        <p:outputLabel value="Uf:" for="uf" />
+                        <p:selectOneMenu id="uf" value="#{cidadeBean.cidade.uf}">
+                            <f:selectItem itemValue="AC" itemLabel="AC"/>
+                            <f:selectItem itemValue="AL" itemLabel="AL"/>
+                            <f:selectItem itemValue="AM" itemLabel="AM"/>
+                            <f:selectItem itemValue="AP" itemLabel="AP"/>
+                            <f:selectItem itemValue="BA" itemLabel="BA"/>
+                            <f:selectItem itemValue="CE" itemLabel="CE"/>
+                            <f:selectItem itemValue="DF" itemLabel="DF"/>
+                            <f:selectItem itemValue="ES" itemLabel="ES"/>
+                            <f:selectItem itemValue="GO" itemLabel="GO"/>
+                            <f:selectItem itemValue="MA" itemLabel="MA"/>
+                            <f:selectItem itemValue="MG" itemLabel="MG"/>
+                            <f:selectItem itemValue="MS" itemLabel="MS"/>
+                            <f:selectItem itemValue="MT" itemLabel="MT"/>
+                            <f:selectItem itemValue="PA" itemLabel="PA"/>
+                            <f:selectItem itemValue="PB" itemLabel="PB"/>
+                            <f:selectItem itemValue="PE" itemLabel="PE"/>
+                            <f:selectItem itemValue="PI" itemLabel="PI"/>
+                            <f:selectItem itemValue="PR" itemLabel="PR"/>
+                            <f:selectItem itemValue="RJ" itemLabel="RJ"/>
+                            <f:selectItem itemValue="RN" itemLabel="RN"/>
+                            <f:selectItem itemValue="RO" itemLabel="RO"/>
+                            <f:selectItem itemValue="RR" itemLabel="RR"/>
+                            <f:selectItem itemValue="RS" itemLabel="RS"/>
+                            <f:selectItem itemValue="SC" itemLabel="SC"/>
+                            <f:selectItem itemValue="SE" itemLabel="SE"/>
+                            <f:selectItem itemValue="SP" itemLabel="SP"/>
+                            <f:selectItem itemValue="TO" itemLabel="TO"/>  
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="Capital?" for="capital" />
+                        <p:selectOneMenu id="capital" value="#{cidadeBean.cidade.metropole}">
+                            <f:selectItem itemValue="true" itemLabel="Sim"/>
+                            <f:selectItem itemValue="false" itemLabel="Não"/>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="Ibge:" for="ibge" />
+                        <p:inputText id="ibge" value="#{cidadeBean.cidade.ibge}" title="Ibge" />
+
+                        <p:outputLabel value="Populacao:" for="populacao" />
+                        <p:inputText id="populacao" value="#{cidadeBean.cidade.populacao}" title="Populacao" />
+
+                        <p:outputLabel value="Area:" for="area" />
+                        <p:inputText id="area" value="#{cidadeBean.cidade.area}" title="Area" />
+
+                        <p:outputLabel value="Pib:" for="pib" />
+                        <p:inputText id="pib" value="#{cidadeBean.cidade.pib}" title="Pib" />
+
+                        <p:outputLabel value="Comentario:" for="comentario" />
+                        <p:inputText id="comentario" value="#{cidadeBean.cidade.comentario}" title="Comentario" />
+
+                        <p:outputLabel value="Governador:" for="governador" />
+                        <p:inputText id="governador" value="#{cidadeBean.cidade.governador}" title="Governador" />
+                        
+                       
+                    
+
+                    </p:panelGrid>
+                    <h:form>
+                        <p:commandButton action="#{cidadeBean.salvar()}" value="Salvar" style="font-size: small"/>
+                        <p:commandButton action="cidade" value="Voltar" style="font-size: small"/>
+                        
+                    </h:form>
+                    
+
+                   
 
 
-    <h:head>
-        <f:facet name="first">
-            <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-            <title>Cadastro de Usuário</title>
-        </f:facet>
-    </h:head>
 
-    <h:body>
-        <f:view>
-            <h:form>
-                <h:messages/>
-                
-                <h:inputHidden value="#{cidadeBean.cidade.idCidade}"/>
-                
-                <h1><h:outputText value="Cadastro de Cidades"/></h1>
-                
-                <p:panelGrid columns="2">
-
-                    <p:outputLabel value="Nome:" for="nome" />
-                    <p:inputText id="nome" value="#{cidadeBean.cidade.nome}" title="Nome" />
-                    <p:outputLabel value="Uf:" for="uf" />
-                    <p:selectOneMenu id="uf" value="#{cidadeBean.cidade.uf}">
-                        <f:selectItem itemValue="AC" itemLabel="AC"/>
-                        <f:selectItem itemValue="AL" itemLabel="AL"/>
-                        <f:selectItem itemValue="AM" itemLabel="AM"/>
-                        <f:selectItem itemValue="AP" itemLabel="AP"/>
-                        <f:selectItem itemValue="BA" itemLabel="BA"/>
-                        <f:selectItem itemValue="CE" itemLabel="CE"/>
-                        <f:selectItem itemValue="DF" itemLabel="DF"/>
-                        <f:selectItem itemValue="ES" itemLabel="ES"/>
-                        <f:selectItem itemValue="GO" itemLabel="GO"/>
-                        <f:selectItem itemValue="MA" itemLabel="MA"/>
-                        <f:selectItem itemValue="MG" itemLabel="MG"/>
-                        <f:selectItem itemValue="MS" itemLabel="MS"/>
-                        <f:selectItem itemValue="MT" itemLabel="MT"/>
-                        <f:selectItem itemValue="PA" itemLabel="PA"/>
-                        <f:selectItem itemValue="PB" itemLabel="PB"/>
-                        <f:selectItem itemValue="PE" itemLabel="PE"/>
-                        <f:selectItem itemValue="PI" itemLabel="PI"/>
-                        <f:selectItem itemValue="PR" itemLabel="PR"/>
-                        <f:selectItem itemValue="RJ" itemLabel="RJ"/>
-                        <f:selectItem itemValue="RN" itemLabel="RN"/>
-                        <f:selectItem itemValue="RO" itemLabel="RO"/>
-                        <f:selectItem itemValue="RR" itemLabel="RR"/>
-                        <f:selectItem itemValue="RS" itemLabel="RS"/>
-                        <f:selectItem itemValue="SC" itemLabel="SC"/>
-                        <f:selectItem itemValue="SE" itemLabel="SE"/>
-                        <f:selectItem itemValue="SP" itemLabel="SP"/>
-                        <f:selectItem itemValue="TO" itemLabel="TO"/>  
-                    </p:selectOneMenu>
-
-                    <p:outputLabel value="Capital?" for="capital" />
-                    <p:selectOneMenu id="capital" value="#{cidadeBean.cidade.metropole}">
-                        <f:selectItem itemValue="true" itemLabel="Sim"/>
-                        <f:selectItem itemValue="false" itemLabel="Não"/>
-                    </p:selectOneMenu>
-                    
-                    <p:outputLabel value="Ibge:" for="ibge" />
-                    <p:inputText id="ibge" value="#{cidadeBean.cidade.ibge}" title="Ibge" />
-                    
-                    <p:outputLabel value="Populacao:" for="populacao" />
-                    <p:inputText id="populacao" value="#{cidadeBean.cidade.populacao}" title="Populacao" />
-                    
-                    <p:outputLabel value="Area:" for="area" />
-                    <p:inputText id="area" value="#{cidadeBean.cidade.area}" title="Area" />
-                    
-                    <p:outputLabel value="Pib:" for="pib" />
-                    <p:inputText id="pib" value="#{cidadeBean.cidade.pib}" title="Pib" />
-                    
-                    <p:outputLabel value="Comentario:" for="comentario" />
-                    <p:inputText id="comentario" value="#{cidadeBean.cidade.comentario}" title="Comentario" />
-                    
-                    <p:outputLabel value="Governador:" for="governador" />
-                    <p:inputText id="governador" value="#{cidadeBean.cidade.governador}" title="Governador" />
-                
-                </p:panelGrid>
-                
-                <br/>
-                <p:commandButton action="#{cidadeBean.salvar()}" value="Salvar"/>
-                <p:commandButton action="cidade" value="Voltar"/>
-                
-               
-
-            </h:form>
-        </f:view>
-    </h:body>
+                </h:form>
+            </f:view>
+        </ui:define>
+    </ui:composition>
 
 </html>

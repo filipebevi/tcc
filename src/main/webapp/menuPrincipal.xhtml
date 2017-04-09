@@ -10,6 +10,13 @@
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
                 <title>SIGAR</title>
+                <style type="text/css">
+                    .semBorda tr, .semBorda td {  
+                        border: none !important;  
+                    }  
+
+                </style>
+
             </f:facet>
         </h:head>
 
@@ -17,13 +24,11 @@
 
             <p:layout fullPage="true">
 
-                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true" style="text-align: center" >
                     <h2>SIGAR - Sistema para Gerenciamento de Atas de Reunião</h2>
                 </p:layoutUnit>
 
-                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                    <h5>SIGAR - Sistema desenvolvido para o trabalho de conclusão de curso do aluno: Filipe Souza Beviláqua do curso de S.I</h5>
-                </p:layoutUnit>
+                
 
                 <p:layoutUnit position="west" size="175" header="Menu" collapsible="true">
                     <p:menu>
@@ -37,7 +42,7 @@
                         <p:submenu label="Reunião">
                             <p:menuitem value="Criar" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
                             <p:menuitem value="Consultar" url="http://www.primefaces.org/documentation.html" />
-                            
+
 
                         </p:submenu>
 
@@ -45,7 +50,9 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-                    Bem Vindo ao SIGAR, acesse o menu para navegar pela ferramenta
+                    <h:form style="margin-left: 30px">
+                        <ui:insert name="conteudo"/> 
+                    </h:form>
                 </p:layoutUnit>
 
             </p:layout>
