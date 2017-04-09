@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class Empresa implements Serializable {
     @GeneratedValue
     @Id
-    private Integer idempresa;
+    private Integer idEmpresa;
     private String nome;
     private String cnpj;
     private String endereco;
@@ -37,12 +37,15 @@ public class Empresa implements Serializable {
     private Integer qtdFunc;
     private double faturamento;
 
-    public Integer getIdempresa() {
-        return idempresa;
+    public Empresa() {
     }
 
-    public void setIdempresa(Integer idempresa) {
-        this.idempresa = idempresa;
+    public Integer getIdEmpresa() {
+        return idEmpresa;
+    }
+
+    public void setIdEmpresa(Integer idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 
     public String getNome() {
@@ -120,16 +123,16 @@ public class Empresa implements Serializable {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 17 * hash + Objects.hashCode(this.idempresa);
-        hash = 17 * hash + Objects.hashCode(this.nome);
-        hash = 17 * hash + Objects.hashCode(this.cnpj);
-        hash = 17 * hash + Objects.hashCode(this.endereco);
-        hash = 17 * hash + Objects.hashCode(this.telefone);
-        hash = 17 * hash + Objects.hashCode(this.email);
-        hash = 17 * hash + Objects.hashCode(this.idCidade);
-        hash = 17 * hash + Objects.hashCode(this.dtFundacao);
-        hash = 17 * hash + Objects.hashCode(this.qtdFunc);
-        hash = 17 * hash + (int) (Double.doubleToLongBits(this.faturamento) ^ (Double.doubleToLongBits(this.faturamento) >>> 32));
+        hash = 79 * hash + Objects.hashCode(this.idEmpresa);
+        hash = 79 * hash + Objects.hashCode(this.nome);
+        hash = 79 * hash + Objects.hashCode(this.cnpj);
+        hash = 79 * hash + Objects.hashCode(this.endereco);
+        hash = 79 * hash + Objects.hashCode(this.telefone);
+        hash = 79 * hash + Objects.hashCode(this.email);
+        hash = 79 * hash + Objects.hashCode(this.idCidade);
+        hash = 79 * hash + Objects.hashCode(this.dtFundacao);
+        hash = 79 * hash + Objects.hashCode(this.qtdFunc);
+        hash = 79 * hash + (int) (Double.doubleToLongBits(this.faturamento) ^ (Double.doubleToLongBits(this.faturamento) >>> 32));
         return hash;
     }
 
@@ -163,7 +166,7 @@ public class Empresa implements Serializable {
         if (!Objects.equals(this.email, other.email)) {
             return false;
         }
-        if (!Objects.equals(this.idempresa, other.idempresa)) {
+        if (!Objects.equals(this.idEmpresa, other.idEmpresa)) {
             return false;
         }
         if (!Objects.equals(this.idCidade, other.idCidade)) {
@@ -177,6 +180,13 @@ public class Empresa implements Serializable {
         }
         return true;
     }
+
+    
+
+    
+    
+
+    
     
     
     
