@@ -5,32 +5,39 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
-    <f:view contentType="text/html">
-        <h:head>
-            <f:facet name="first">
+    <f:view contentType="text/html" >
+        <h:head >
+            <f:facet name="first" >
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
                 <title>SIGAR</title>
                 <style type="text/css">
                     .semBorda tr, .semBorda td {  
                         border: none !important;  
                     }  
+                    body {background-color: #696969; font-size: 12px}
+                     
 
                 </style>
+                
+               
 
             </f:facet>
         </h:head>
 
         <h:body>
+            <div align="center">
 
-            <p:layout fullPage="true">
+                <p:layout style="min-width:1050px;max-width:1050px;min-height:600px" >
 
-                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true" style="text-align: center" >
-                    <h2>SIGAR - Sistema para Gerenciamento de Atas de Reunião</h2>
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true" style="text-align: center;border: none; font-size: xx-large " >
+                    
+                    SIGAR - Sistema para Gerenciamento de Atas de Reunião
+                    
                 </p:layoutUnit>
 
                 
 
-                <p:layoutUnit position="west" size="175" header="Menu" collapsible="true">
+                <p:layoutUnit position="west" size="230" header="Menu" collapsible="true" style="border: none" >
                     <p:menu>
                         <p:submenu label="Cadastro">
                             <p:menuitem value="Participantes" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
@@ -50,13 +57,13 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-                    <h:form style="margin-left: 30px">
+                    <div align="left" style="margin-left: 20px; margin-right: 20px; margin-top: 20px" >
                         <ui:insert name="conteudo"/> 
-                    </h:form>
+                    </div>
                 </p:layoutUnit>
 
             </p:layout>
-
+</div>
         </h:body>
 
     </f:view>

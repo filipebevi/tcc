@@ -12,67 +12,68 @@
                     <p:commandButton action="#{cidadeBean.novo()}" value="Novo"/>
                     <p:commandButton action="menuPrincipal" value="Voltar" />
 
-
                     <br/>
+                    <br/>
+                    <br/>
+                    <h:form id="lixoso">
+                        <p:dataTable value="#{cidadeBean.lista}" var="item" rows="10"
+                                     paginator="true" draggableColumns="true" draggableRows="true"  >
 
 
+                            <p:column sortBy="#{item.idCidade}"
+                                      filterBy="#{item.idCidade}" style="text-align: center">
+                                <f:facet name="header">
+                                    <h:outputText value="Código"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idCidade}"/>
+                            </p:column>
 
+                            <p:column sortBy="#{item.nome}"
+                                      filterBy="#{item.nome}" >
+                                <f:facet name="header">
+                                    <h:outputText value="Nome"/>
+                                </f:facet>
+                                <h:outputText value="#{item.nome}"/>
+                            </p:column>
 
-                    <p:dataTable value="#{cidadeBean.lista}" var="item" rows="10"
-                                 paginator="true" draggableColumns="true" draggableRows="true" style="    width: 766px; font-size: 15px;" >
-                        <f:facet name="header">Lista de cidades cadastradas</f:facet>
+                            <p:column sortBy="#{item.uf}"
+                                      filterBy="#{item.uf}" style="text-align: center">
+                                <f:facet name="header">
+                                    <h:outputText value="Uf"/>
+                                </f:facet>
+                                <h:outputText value="#{item.uf}"/>
+                            </p:column>
 
-                        <p:column sortBy="#{item.idCidade}"
-                                  filterBy="#{item.idCidade}" style="text-align: center">
-                            <f:facet name="header">
-                                <h:outputText value="Código"/>
+                            <p:column style="text-align: center">
+                                <f:facet name="header">
+                                    <h:outputText value="Editar"/>
+                                </f:facet>
+                                <p:commandLink action="#{cidadeBean.editar}">
+                                    <p:graphicImage library="imagens" name="editar.png" style="border: 0"/>
+                                    <f:setPropertyActionListener target="#{cidadeBean.cidade}" value="#{item}"/>
+                                </p:commandLink>    
+                            </p:column>
+
+                            <p:column style="text-align: center">
+                                <f:facet name="header">
+                                    <h:outputText value="Excluir"/>
+                                </f:facet>
+                                <p:commandLink   action="#{cidadeBean.excluir()}" onclick="if (!confirm('Confirma a exclusao da cidade #{item.nome}?'))
+                                    return false;"  >
+                                    <p:graphicImage library="imagens" name="excluir.png" style="border: 0"/>
+                                    <f:setPropertyActionListener target="#{cidadeBean.cidade}" value="#{item}"/>
+                                    <f:ajax execute="@this" render=":lixoso"/>
+                                    
+                                </p:commandLink>    
+                            </p:column>
+
+                            <f:facet name="footer">
+                                <h:outputText value="Existem " />
+                                <h:outputText value="#{fn:length(cidadeBean.lista)}" />
+                                <h:outputText value=" Cidades cadastradas. " />
                             </f:facet>
-                            <h:outputText value="#{item.idCidade}"/>
-                        </p:column>
-
-                        <p:column sortBy="#{item.nome}"
-                                  filterBy="#{item.nome}" >
-                            <f:facet name="header">
-                                <h:outputText value="Nome"/>
-                            </f:facet>
-                            <h:outputText value="#{item.nome}"/>
-                        </p:column>
-
-                        <p:column sortBy="#{item.uf}"
-                                  filterBy="#{item.uf}" style="text-align: center">
-                            <f:facet name="header">
-                                <h:outputText value="Uf"/>
-                            </f:facet>
-                            <h:outputText value="#{item.uf}"/>
-                        </p:column>
-
-                        <p:column style="text-align: center">
-                            <f:facet name="header">
-                                <h:outputText value="Editar"/>
-                            </f:facet>
-                            <p:commandLink action="#{cidadeBean.editar}">
-                                <p:graphicImage library="imagens" name="editar.png" style="border: 0"/>
-                                <f:setPropertyActionListener target="#{cidadeBean.cidade}" value="#{item}"/>
-                            </p:commandLink>    
-                        </p:column>
-
-                        <p:column style="text-align: center">
-                            <f:facet name="header">
-                                <h:outputText value="Excluir"/>
-                            </f:facet>
-                            <p:commandLink  action="#{cidadeBean.excluir()}" onclick="if (!confirm('Confirma a exclusao da cidade #{item.nome}?'))
-                                            return false;">
-                                <p:graphicImage library="imagens" name="excluir.png" style="border: 0"/>
-                                <f:setPropertyActionListener target="#{cidadeBean.cidade}" value="#{item}"/>
-                            </p:commandLink>    
-                        </p:column>
-
-                        <f:facet name="footer">
-                            <h:outputText value="Existem " />
-                            <h:outputText value="#{fn:length(cidadeBean.lista)}" />
-                            <h:outputText value=" Cidades cadastradas. " />
-                        </f:facet>
-                    </p:dataTable>
+                        </p:dataTable>
+                    </h:form>
                 </h:form>
 
 
