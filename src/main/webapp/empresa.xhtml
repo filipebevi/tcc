@@ -7,75 +7,75 @@
       xmlns:fn="http://java.sun.com/jsp/jstl/functions">
     <ui:composition template="menuPrincipal.xhtml">
         <ui:define name="conteudo">
-            <f:view>
-                <h:form>
-                    <h:messages/>
-                    <p:commandButton action="#{empresaBean.novo()}" value="Novo"/>
-                    <p:commandButton action="menuPrincipal" value="Voltar" />
 
-                    <br/>
-                    <br/>
-                    <br/>
-                    <h:form id="lixoso">
-                        <p:dataTable value="#{empresaBean.lista}" var="item" rows="10"
-                                     paginator="true" draggableColumns="true" draggableRows="true"  >
+            <h:form>
+                <h:messages/>
+                <p:commandButton action="#{empresaBean.novo()}" value="Novo"/>
+                <p:commandButton action="menuPrincipal" value="Voltar" />
+            </h:form>
+
+            <br/>
+            <br/>
+            <br/>
+            <h:form>
+                <p:dataTable value="#{empresaBean.lista}" var="item" rows="10"
+                             paginator="true" draggableColumns="true" draggableRows="true"  >
 
 
-                            <p:column sortBy="#{item.idEmpresa}"
-                                      filterBy="#{item.idEmpresa}" style="text-align: center">
-                                <f:facet name="header">
-                                    <h:outputText value="Código"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idEmpresa}"/>
-                            </p:column>
+                    <p:column sortBy="#{item.idEmpresa}"
+                              filterBy="#{item.idEmpresa}" style="text-align: center">
+                        <f:facet name="header">
+                            <h:outputText value="Código"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idEmpresa}"/>
+                    </p:column>
 
-                            <p:column sortBy="#{item.nome}"
-                                      filterBy="#{item.nome}" >
-                                <f:facet name="header">
-                                    <h:outputText value="Nome"/>
-                                </f:facet>
-                                <h:outputText value="#{item.nome}"/>
-                            </p:column>
+                    <p:column sortBy="#{item.nome}"
+                              filterBy="#{item.nome}" >
+                        <f:facet name="header">
+                            <h:outputText value="Nome"/>
+                        </f:facet>
+                        <h:outputText value="#{item.nome}"/>
+                    </p:column>
 
-                           
 
-                            <p:column style="text-align: center">
-                                <f:facet name="header">
-                                    <h:outputText value="Editar"/>
-                                </f:facet>
-                                <p:commandLink action="#{empresaBean.editar()}">
-                                    <p:graphicImage library="imagens" name="editar.png" style="border: 0"/>
-                                    <f:setPropertyActionListener target="#{empresaBean.empresa}" value="#{item}"/>
-                                </p:commandLink>    
-                            </p:column>
 
-                            <p:column style="text-align: center">
-                                <f:facet name="header">
-                                    <h:outputText value="Excluir"/>
-                                </f:facet>
-                                <p:commandLink   action="#{empresaBean.excluir()}" onclick="if (!confirm('Confirma a exclusao da empresa #{item.nome}?'))
+                    <p:column style="text-align: center">
+                        <f:facet name="header">
+                            <h:outputText value="Editar"/>
+                        </f:facet>
+                        <p:commandLink action="#{empresaBean.editar()}">
+                            <p:graphicImage library="imagens" name="editar.png" style="border: 0"/>
+                            <f:setPropertyActionListener target="#{empresaBean.empresa}" value="#{item}"/>
+                        </p:commandLink>    
+                    </p:column>
+
+                    <p:column style="text-align: center">
+                        <f:facet name="header">
+                            <h:outputText value="Excluir"/>
+                        </f:facet>
+                        <p:commandLink   action="#{empresaBean.excluir()}" onclick="if (!confirm('Confirma a exclusao da empresa #{item.nome}?'))
                                     return false;"  >
-                                    <p:graphicImage library="imagens" name="excluir.png" style="border: 0"/>
-                                    <f:setPropertyActionListener target="#{empresaBean.empresa}" value="#{item}"/>
-                                    <f:ajax execute="@this" render=":lixoso"/>
-                                    
-                                </p:commandLink>    
-                            </p:column>
+                            <p:graphicImage library="imagens" name="excluir.png" style="border: 0"/>
+                            <f:setPropertyActionListener target="#{empresaBean.empresa}" value="#{item}"/>
+                            
 
-                            <f:facet name="footer">
-                                <h:outputText value="Existem " />
-                                <h:outputText value="#{fn:length(empresaBean.lista)}" />
-                                <h:outputText value=" Empresas cadastradas. " />
-                            </f:facet>
-                        </p:dataTable>
-                    </h:form>
-                </h:form>
+                        </p:commandLink>    
+                    </p:column>
 
+                    <f:facet name="footer">
+                        <h:outputText value="Existem " />
+                        <h:outputText value="#{fn:length(empresaBean.lista)}" />
+                        <h:outputText value=" Empresas cadastradas. " />
+                    </f:facet>
+                </p:dataTable>
+            </h:form>
 
 
 
 
-            </f:view>
+
+
         </ui:define>
     </ui:composition>
 </html>

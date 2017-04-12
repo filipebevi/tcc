@@ -9,64 +9,64 @@
 
     <ui:composition template="menuPrincipal.xhtml">
         <ui:define name="conteudo">
-            <f:view>
-                <h:form>
-                    <h:messages/>
-                    <h:inputHidden value="#{empresaBean.empresa.idEmpresa}"/>
+
+
+            <h:messages/>
 
 
 
 
 
 
-                    <h1><h:outputText value="Create/Edit"/></h1>
-                    <p:panelGrid columns="2">
-                        <p:outputLabel value="Código:" for="idEmpresa" />
-                        <p:inputText id="idEmpresa" value="#{empresaBean.empresa.idEmpresa}" title="IdEmpresa" disabled="true"  />
-                        <p:outputLabel value="Nome:" for="nome" />
-                        <p:inputText id="nome" value="#{empresaBean.empresa.nome}" title="Nome" />
-                        <p:outputLabel value="Cnpj:" for="cnpj" />
-                        <p:inputText id="cnpj" value="#{empresaBean.empresa.cnpj}" title="Cnpj" />
-                        <p:outputLabel value="Endereco:" for="endereco" />
-                        <p:inputText id="endereco" value="#{empresaBean.empresa.endereco}" title="Endereco" />
-                        <p:outputLabel value="Telefone:" for="telefone" />
-                        <p:inputText id="telefone" value="#{empresaBean.empresa.telefone}" title="Telefone" />
-                        <p:outputLabel value="Email:" for="email" />
-                        <p:inputText id="email" value="#{empresaBean.empresa.email}" title="Email" />
-                        <h:outputLabel value="Cidade:" for="cidade" />
-                        
-                        <!-- PROCURAR COMO FAZ PARA CONSEGUIR GRAVAR ESTA INFORMACAO POIS A LISTAGEM FAZ MAS NÃO GRAVA
-                        <p:selectOneMenu  id="cidade"   value="#{empresaBean.empresa.idCidade}">
-                            <f:selectItems  value="#{cidadeBean.lista}" var="item" itemValue="#{item}" itemLabel="#{item.nome}-#{item.uf}"/>
-                        </p:selectOneMenu>
-                        -->
-                     
+            <h:form>
+                <h1><h:outputText value="Cadastro de Empresa"/></h1>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="Código:" for="idEmpresa" />
+                    <p:inputText id="idEmpresa" value="#{empresaBean.empresa.idEmpresa}" title="IdEmpresa" disabled="true"  />
+                    <p:outputLabel value="Nome:" for="nome" />
+                    <p:inputText id="nome" value="#{empresaBean.empresa.nome}" title="Nome" />
+                    <p:outputLabel value="Cnpj:" for="cnpj" />
+                    <p:inputText id="cnpj" value="#{empresaBean.empresa.cnpj}" title="Cnpj" />
+                    <p:outputLabel value="Endereco:" for="endereco" />
+                    <p:inputText id="endereco" value="#{empresaBean.empresa.endereco}" title="Endereco" />
+                    <p:outputLabel value="Telefone:" for="telefone" />
+                    <p:inputText id="telefone" value="#{empresaBean.empresa.telefone}" title="Telefone" />
+                    <p:outputLabel value="Email:" for="email" />
+                    <p:inputText id="email" value="#{empresaBean.empresa.email}" title="Email" />
+                    <h:outputLabel value="Cidade:" for="cidade" />
 
-
-                        <p:outputLabel value="DtFundacao:" for="dtFundacao" />
-                        <p:inputText id="dtFundacao" value="#{empresaBean.empresa.dtFundacao}" title="DtFundacao" />
-                        <p:outputLabel value="QtdFunc:" for="qtdFunc" />
-                        <p:inputText id="qtdFunc" value="#{empresaBean.empresa.qtdFunc}" title="QtdFunc" />
-                        <p:outputLabel value="Faturamento:" for="faturamento" />
-                        <p:inputText id="faturamento" value="#{empresaBean.empresa.faturamento}" title="Faturamento" />
-                    </p:panelGrid>
+                    <!-- PROCURAR COMO FAZ PARA CONSEGUIR GRAVAR ESTA INFORMACAO POIS A LISTAGEM FAZ MAS NÃO GRAVA
+                    <p:selectOneMenu  id="cidade"   value="#{empresaBean.empresa.idCidade}">
+                        <f:selectItems  value="#{cidadeBean.lista}" var="item" itemValue="#{item}" itemLabel="#{item.nome}-#{item.uf}"/>
+                    </p:selectOneMenu>
+                    -->
 
 
 
-
-                    <h:form>
-                        <p:commandButton action="#{empresaBean.salvar()}" value="Salvar" style="font-size: small"/>
-                        <p:commandButton action="empresa" value="Voltar" style="font-size: small"/>
-
-                    </h:form>
-
-
-
-
+                    <p:outputLabel value="DtFundacao:" for="dtFundacao" />
+                    <p:inputText id="dtFundacao" value="#{empresaBean.empresa.dtFundacao}" title="DtFundacao" />
+                    <p:outputLabel value="QtdFunc:" for="qtdFunc" />
+                    <p:inputText id="qtdFunc" value="#{empresaBean.empresa.qtdFunc}" title="QtdFunc" />
+                    <p:outputLabel value="Faturamento:" for="faturamento" />
+                    <p:inputText id="faturamento" value="#{empresaBean.empresa.faturamento}" title="Faturamento" />
+                </p:panelGrid>
+            </h:form>
 
 
-                </h:form>
-            </f:view>
+
+            <h:form>
+                <p:commandButton action="#{empresaBean.salvar()}" value="Salvar" style="font-size: small"/>
+                <p:commandButton action="empresa" value="Voltar" style="font-size: small"/>
+
+            </h:form>
+
+
+
+
+
+
+
+
         </ui:define>
     </ui:composition>
 
