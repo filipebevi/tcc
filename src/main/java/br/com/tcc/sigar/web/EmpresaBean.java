@@ -9,6 +9,7 @@ package br.com.tcc.sigar.web;
 
 import br.com.tcc.sigar.empresa.Empresa;
 import br.com.tcc.sigar.empresa.EmpresaRN;
+import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -20,7 +21,7 @@ import javax.faces.bean.RequestScoped;
  */
 @ManagedBean
 @RequestScoped
-public class EmpresaBean {
+public class EmpresaBean implements Serializable{
     
     private Empresa empresa = new Empresa();
     private List<Empresa> lista;
@@ -42,7 +43,10 @@ public class EmpresaBean {
         EmpresaRN empresaRN = new EmpresaRN();
         empresaRN.salvar(this.empresa);
         
+        //System.out.println(this.empresa.getNome());
         return "empresa";
+        
+        
     }
 
     public List<Empresa> getLista() {
