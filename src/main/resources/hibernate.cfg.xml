@@ -50,5 +50,6 @@ Contributor(s):
     <property name="hibernate.current_session_context_class">thread</property>
     <mapping class="br.com.tcc.sigar.cidade.Cidade"/>
     <mapping class="br.com.tcc.sigar.empresa.Empresa"/>
+    <mapping class="br.com.tcc.sigar.departamento.Departamento"/>
   </session-factory>
 </hibernate-configuration>

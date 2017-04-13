@@ -25,7 +25,10 @@
                         <p:inputText id="telefone" value="#{empresaBean.empresa.telefone}" title="Telefone" />
                         <p:outputLabel value="Email:" for="email" />
                         <p:inputText id="email" value="#{empresaBean.empresa.email}" title="Email" />
-                        
+                        <h:outputLabel value="Cidade:" for="cidade" />
+                        <p:selectOneMenu  id="cidade"   value="#{empresaBean.empresa.idCidade}" converter="omnifaces.SelectItemsConverter">
+                            <f:selectItems  value="#{cidadeBean.lista}" var="item" itemValue="#{item}" itemLabel="#{item.nome}-#{item.uf}"/>
+                        </p:selectOneMenu>
 
 
 
@@ -41,7 +44,7 @@
 
 
                     <h:form>
-                        <p:commandButton action="#{empresaBean.salvar()}" value="Salvar" style="font-size: small"/>
+                        <p:commandButton action="#{empresaBean.salvar()}" value="Salvar" style="font-size: small" />
                         <p:commandButton action="empresa" value="Voltar" style="font-size: small"/>
                     </h:form>
                 </h:form>

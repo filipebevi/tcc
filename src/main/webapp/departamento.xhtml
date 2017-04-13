@@ -11,7 +11,7 @@
                 
                 <h:form>
                  
-                    <p:commandButton action="#{empresaBean.novo()}" value="Novo"/>
+                    <p:commandButton action="#{departamentoBean.novo()}" value="Novo"/>
                     <p:commandButton action="menuPrincipal" value="Voltar" />
 
 
@@ -19,16 +19,16 @@
                     <br/>
                     <br/>
                     <h:form>
-                        <p:dataTable value="#{empresaBean.lista}" var="item" rows="10"
+                        <p:dataTable value="#{departamentoBean.lista}" var="item" rows="10"
                                      paginator="true" draggableColumns="true" draggableRows="true"  >
 
 
-                            <p:column sortBy="#{item.idEmpresa}"
-                                      filterBy="#{item.idEmpresa}" style="text-align: center">
+                            <p:column sortBy="#{item.idDepartamento}"
+                                      filterBy="#{item.idDepartamento}" style="text-align: center">
                                 <f:facet name="header">
                                     <h:outputText value="Código"/>
                                 </f:facet>
-                                <h:outputText value="#{item.idEmpresa}"/>
+                                <h:outputText value="#{item.idDepartamento}"/>
                             </p:column>
 
                             <p:column sortBy="#{item.nome}"
@@ -45,9 +45,9 @@
                                 <f:facet name="header">
                                     <h:outputText value="Editar"/>
                                 </f:facet>
-                                <p:commandLink action="#{empresaBean.editar()}">
+                                <p:commandLink action="#{departamentoBean.editar()}">
                                     <p:graphicImage library="imagens" name="editar.png" style="border: 0"/>
-                                    <f:setPropertyActionListener target="#{empresaBean.empresa}" value="#{item}"/>
+                                    <f:setPropertyActionListener target="#{departamentoBean.departamento}" value="#{item}"/>
                                 </p:commandLink>    
                             </p:column>
 
@@ -55,10 +55,10 @@
                                 <f:facet name="header">
                                     <h:outputText value="Excluir"/>
                                 </f:facet>
-                                <p:commandLink   action="#{empresaBean.excluir()}" onclick="if (!confirm('Confirma a exclusao da empresa #{item.nome}?'))
+                                <p:commandLink   action="#{departamentoBean.excluir()}" onclick="if (!confirm('Confirma a exclusao do departamento #{item.nome}?'))
                                             return false;"  >
                                     <p:graphicImage library="imagens" name="excluir.png" style="border: 0"/>
-                                    <f:setPropertyActionListener target="#{empresaBean.empresa}" value="#{item}"/>
+                                    <f:setPropertyActionListener target="#{departamentoBean.departamento}" value="#{item}"/>
 
 
                                 </p:commandLink>    
@@ -66,7 +66,7 @@
 
                             <f:facet name="footer">
                                 <h:outputText value="Existem " />
-                                <h:outputText value="#{fn:length(empresaBean.lista)}" />
+                                <h:outputText value="#{fn:length(departamentoBean.lista)}" />
                                 <h:outputText value=" Empresas cadastradas. " />
                             </f:facet>
                         </p:dataTable>

@@ -7,6 +7,8 @@ package br.com.tcc.sigar.util;
 
 import br.com.tcc.sigar.cidade.CidadeDAO;
 import br.com.tcc.sigar.cidade.CidadeDAOHibernate;
+import br.com.tcc.sigar.departamento.DepartamentoDAO;
+import br.com.tcc.sigar.departamento.DepartamentoDAOHibernate;
 import br.com.tcc.sigar.empresa.EmpresaDAO;
 import br.com.tcc.sigar.empresa.EmpresaDAOHibernate;
 
@@ -26,6 +28,12 @@ public class DAOFactory {
         EmpresaDAOHibernate empresaDAO=new EmpresaDAOHibernate();
         empresaDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
         return empresaDAO;
+    }
+    
+     public static DepartamentoDAO criarDepartamentoDAO(){
+         DepartamentoDAOHibernate departamentoDAO=new DepartamentoDAOHibernate();
+        departamentoDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
+        return departamentoDAO;
     }
     
 }

@@ -47,6 +47,15 @@
             <artifactId>all-themes</artifactId>
             <version>1.0.10</version>
         </dependency>
+        
+        
+        <!-- https://mvnrepository.com/artifact/org.omnifaces/omnifaces -->
+<dependency>
+    <groupId>org.omnifaces</groupId>
+    <artifactId>omnifaces</artifactId>
+    <version>1.14</version>
+</dependency>
+
     </dependencies>
 
     <build>

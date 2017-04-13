@@ -16,7 +16,8 @@ import javax.persistence.Id;
  * @author Flipe
  */
 @Entity
-public class Cidade implements Serializable{
+public class Cidade implements Serializable {
+
     @Id
     @GeneratedValue
     private Integer idCidade;
@@ -114,18 +115,23 @@ public class Cidade implements Serializable{
     }
 
     @Override
+    public String toString() {
+        return String.format("%s[id=%d]", getClass().getSimpleName(), getIdCidade());
+    }
+
+    @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 17 * hash + Objects.hashCode(this.idCidade);
-        hash = 17 * hash + Objects.hashCode(this.nome);
-        hash = 17 * hash + Objects.hashCode(this.uf);
-        hash = 17 * hash + Objects.hashCode(this.ibge);
-        hash = 17 * hash + Objects.hashCode(this.populacao);
-        hash = 17 * hash + (int) (Double.doubleToLongBits(this.area) ^ (Double.doubleToLongBits(this.area) >>> 32));
-        hash = 17 * hash + (int) (Double.doubleToLongBits(this.pib) ^ (Double.doubleToLongBits(this.pib) >>> 32));
-        hash = 17 * hash + (this.metropole ? 1 : 0);
-        hash = 17 * hash + Objects.hashCode(this.comentario);
-        hash = 17 * hash + Objects.hashCode(this.governador);
+        int hash = 5;
+        hash = 31 * hash + Objects.hashCode(this.idCidade);
+        hash = 31 * hash + Objects.hashCode(this.nome);
+        hash = 31 * hash + Objects.hashCode(this.uf);
+        hash = 31 * hash + Objects.hashCode(this.ibge);
+        hash = 31 * hash + Objects.hashCode(this.populacao);
+        hash = 31 * hash + (int) (Double.doubleToLongBits(this.area) ^ (Double.doubleToLongBits(this.area) >>> 32));
+        hash = 31 * hash + (int) (Double.doubleToLongBits(this.pib) ^ (Double.doubleToLongBits(this.pib) >>> 32));
+        hash = 31 * hash + (this.metropole ? 1 : 0);
+        hash = 31 * hash + Objects.hashCode(this.comentario);
+        hash = 31 * hash + Objects.hashCode(this.governador);
         return hash;
     }
 
@@ -173,7 +179,7 @@ public class Cidade implements Serializable{
         }
         return true;
     }
+
     
-    
-    
+
 }
