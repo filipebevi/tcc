@@ -21,7 +21,7 @@ import javax.faces.bean.RequestScoped;
  */
 @ManagedBean
 @RequestScoped
-public class EmpresaBean implements Serializable{
+public class EmpresaBean {
     
     private Empresa empresa = new Empresa();
     private List<Empresa> lista;
