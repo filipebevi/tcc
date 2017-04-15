@@ -51,5 +51,8 @@ Contributor(s):
     <mapping class="br.com.tcc.sigar.cidade.Cidade"/>
     <mapping class="br.com.tcc.sigar.empresa.Empresa"/>
     <mapping class="br.com.tcc.sigar.departamento.Departamento"/>
+    <mapping class="br.com.tcc.sigar.participante.Participante"/>
+    <mapping class="br.com.tcc.sigar.participante.Funcionario"/>
+    <mapping class="br.com.tcc.sigar.participante.Convidado"/>
   </session-factory>
 </hibernate-configuration>

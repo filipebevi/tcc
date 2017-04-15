@@ -11,6 +11,8 @@ import br.com.tcc.sigar.departamento.DepartamentoDAO;
 import br.com.tcc.sigar.departamento.DepartamentoDAOHibernate;
 import br.com.tcc.sigar.empresa.EmpresaDAO;
 import br.com.tcc.sigar.empresa.EmpresaDAOHibernate;
+import br.com.tcc.sigar.participante.ParticipanteDAO;
+import br.com.tcc.sigar.participante.ParticipanteDAOHibernate;
 
 /**
  *
@@ -34,6 +36,12 @@ public class DAOFactory {
          DepartamentoDAOHibernate departamentoDAO=new DepartamentoDAOHibernate();
         departamentoDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
         return departamentoDAO;
+    }
+    
+     public static ParticipanteDAO criarParticipanteDAO(){
+         ParticipanteDAOHibernate participanteDAO=new ParticipanteDAOHibernate();
+        participanteDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
+        return participanteDAO;
     }
     
 }

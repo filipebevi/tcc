@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+    <ui:composition template="menuPrincipal.xhtml">
+        <ui:define name="conteudo">
+            <f:view>
+                
+                <h:form>
+                 
+                    <p:commandButton action="#{convidadoBean.novo()}" value="Novo"/>
+                    <p:commandButton action="menuPrincipal" value="Voltar" />
+
+
+                    <br/>
+                    <br/>
+                    <br/>
+                    <h:form>
+                        <p:dataTable value="#{convidadoBean.lista}" var="item" rows="10"
+                                     paginator="true" draggableColumns="true" draggableRows="true" resizableColumns="true" >
+
+
+                            <p:column sortBy="#{item.idParticipante}"
+                                      filterBy="#{item.idParticipante}" style="text-align: center" width="50">
+                                <f:facet name="header">
+                                    <h:outputText value="Código"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idParticipante}"/>
+                            </p:column>
+
+                            <p:column sortBy="#{item.nome}"
+                                      filterBy="#{item.nome}" >
+                                <f:facet name="header">
+                                    <h:outputText value="Nome"/>
+                                </f:facet>
+                                <h:outputText value="#{item.nome}"/>
+                            </p:column>
+                            
+                            <p:column sortBy="#{item.cpf}"
+                                      filterBy="#{item.cpf}" >
+                                <f:facet name="header">
+                                    <h:outputText value="Matricula"/>
+                                </f:facet>
+                                <h:outputText value="#{item.cpf}"/>
+                            </p:column>
+                            
+                            <p:column sortBy="#{item.email}"
+                                      filterBy="#{item.email}" >
+                                <f:facet name="header">
+                                    <h:outputText value="Email"/>
+                                </f:facet>
+                                <h:outputText value="#{item.email}"/>
+                            </p:column>
+                            
+                            <p:column sortBy="#{item.idEmpresa.nome}"
+                                      filterBy="#{item.idEmpresa.nome}" >
+                                <f:facet name="header">
+                                    <h:outputText value="Departamento"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idEmpresa.nome}"/>
+                            </p:column>
+
+
+
+                            <p:column style="text-align: center">
+                                <f:facet name="header">
+                                    <h:outputText value="Editar"/>
+                                </f:facet>
+                                <p:commandLink action="#{convidadoBean.editar()}">
+                                    <p:graphicImage library="imagens" name="editar.png" style="border: 0"/>
+                                    <f:setPropertyActionListener target="#{convidadoBean.convidado}" value="#{item}"/>
+                                </p:commandLink>    
+                            </p:column>
+
+                            <p:column style="text-align: center">
+                                <f:facet name="header">
+                                    <h:outputText value="Excluir"/>
+                                </f:facet>
+                                <p:commandLink   action="#{convidadoBean.excluir()}" onclick="if (!confirm('Confirma a exclusao do Convidado #{item.nome}?'))
+                                            return false;"  >
+                                    <p:graphicImage library="imagens" name="excluir.png" style="border: 0"/>
+                                    <f:setPropertyActionListener target="#{convidadoBean.convidado}" value="#{item}"/>
+
+
+                                </p:commandLink>    
+                            </p:column>
+
+                            <f:facet name="footer">
+                                <h:outputText value="Existem " />
+                                <h:outputText value="#{fn:length(convidadoBean.lista)}" />
+                                <h:outputText value=" Convidado cadastrados. " />
+                            </f:facet>
+                        </p:dataTable>
+                    </h:form>
+                </h:form>
+
+            </f:view>
+
+
+
+        </ui:define>
+    </ui:composition>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+
+    <ui:composition template="menuPrincipal.xhtml">
+        <ui:define name="conteudo">
+            <f:view>
+                <h:form>
+                    <h:inputHidden value="#{funcionarioBean.funcionario.idParticipante}"/>
+                    <h1><h:outputText value="Cadastro de Participantes"/></h1>
+                    <p:panelGrid columns="2">
+
+                        <p:outputLabel value="Nome:" for="nome" />
+                        <p:inputText id="nome" value="#{funcionarioBean.funcionario.nome}" title="Nome" />
+                        
+                        <p:outputLabel value="Matricula:" for="matricula" />
+                        <p:inputText id="matricula" value="#{funcionarioBean.funcionario.matricula}" title="matricula" />
+                        
+                        <p:outputLabel value="email:" for="email" />
+                        <p:inputText id="email" value="#{funcionarioBean.funcionario.email}" title="email" />
+                        
+                        <p:outputLabel value="Data de Nascimento:" for="nascimento" />
+                        <p:inputText id="nascimento" value="#{funcionarioBean.funcionario.dataDeNascimento}" title="nascimento" />
+                        
+                        <p:outputLabel value="Endereço:" for="endereco" />
+                        <p:inputText id="endereco" value="#{funcionarioBean.funcionario.endereço}" title="endereco" />
+                        
+                        <p:outputLabel value="Cidade:" for="cidade" />
+                        <p:selectOneMenu  id="cidade"   value="#{funcionarioBean.funcionario.idCidade}" converter="omnifaces.SelectItemsConverter">
+                            <f:selectItem itemValue="#{null}" itemLabel="Escolha um Item" noSelectionOption="true" />
+                            <f:selectItems  value="#{cidadeBean.lista}" var="item" itemValue="#{item}" itemLabel="#{item.nome}-#{item.uf}"/>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="Departamento:" for="departamento" />
+                        <p:selectOneMenu  id="departamento"   value="#{funcionarioBean.funcionario.idDepartamento}" converter="omnifaces.SelectItemsConverter">
+                            <f:selectItem itemValue="#{null}" itemLabel="Escolha um Item" noSelectionOption="true" />
+                            <f:selectItems  value="#{departamentoBean.lista}" var="item" itemValue="#{item}" itemLabel="#{item.nome}"/>
+                        </p:selectOneMenu>
+                        
+                        
+                        <p:outputLabel value="Telefone:" for="telefone" />
+                        <p:inputText id="telefone" value="#{funcionarioBean.funcionario.telefone}" title="telefone" />
+                        
+                        
+
+                    </p:panelGrid>
+
+
+
+
+                    <h:form>
+                        <p:commandButton action="#{funcionarioBean.salvar()}" value="Salvar" style="font-size: small" />
+                        <p:commandButton action="funcionario" value="Voltar" style="font-size: small"/>
+                    </h:form>
+                </h:form>
+
+
+
+
+
+
+            </f:view>
+
+        </ui:define>
+    </ui:composition>
+
+</html>
