@@ -25,7 +25,7 @@
                         <p:inputText id="email" value="#{convidadoBean.convidado.email}" title="email" />
                         
                         <p:outputLabel value="Data de Nascimento:" for="nascimento" />
-                        <p:inputText id="nascimento" value="#{convidadoBean.convidado.dataDeNascimento}" title="nascimento" />
+                        <p:calendar id="nascimento" value="#{funcionarioBean.funcionario.dataDeNascimento.time}" pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
                         
                         <p:outputLabel value="Endereço:" for="endereco" />
                         <p:inputText id="endereco" value="#{convidadoBean.convidado.endereço}" title="endereco" />

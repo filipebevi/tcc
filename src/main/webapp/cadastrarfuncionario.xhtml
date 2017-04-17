@@ -17,19 +17,21 @@
 
                         <p:outputLabel value="Nome:" for="nome" />
                         <p:inputText id="nome" value="#{funcionarioBean.funcionario.nome}" title="Nome" />
-                        
+
                         <p:outputLabel value="Matricula:" for="matricula" />
                         <p:inputText id="matricula" value="#{funcionarioBean.funcionario.matricula}" title="matricula" />
-                        
+
                         <p:outputLabel value="email:" for="email" />
                         <p:inputText id="email" value="#{funcionarioBean.funcionario.email}" title="email" />
-                        
+
                         <p:outputLabel value="Data de Nascimento:" for="nascimento" />
-                        <p:inputText id="nascimento" value="#{funcionarioBean.funcionario.dataDeNascimento}" title="nascimento" />
-                        
+                        <p:calendar id="nascimento" value="#{funcionarioBean.funcionario.dataDeNascimento.time}" pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+                            
+                       
+
                         <p:outputLabel value="Endereço:" for="endereco" />
                         <p:inputText id="endereco" value="#{funcionarioBean.funcionario.endereço}" title="endereco" />
-                        
+
                         <p:outputLabel value="Cidade:" for="cidade" />
                         <p:selectOneMenu  id="cidade"   value="#{funcionarioBean.funcionario.idCidade}" converter="omnifaces.SelectItemsConverter">
                             <f:selectItem itemValue="#{null}" itemLabel="Escolha um Item" noSelectionOption="true" />
@@ -41,12 +43,12 @@
                             <f:selectItem itemValue="#{null}" itemLabel="Escolha um Item" noSelectionOption="true" />
                             <f:selectItems  value="#{departamentoBean.lista}" var="item" itemValue="#{item}" itemLabel="#{item.nome}"/>
                         </p:selectOneMenu>
-                        
-                        
+
+
                         <p:outputLabel value="Telefone:" for="telefone" />
                         <p:inputText id="telefone" value="#{funcionarioBean.funcionario.telefone}" title="telefone" />
-                        
-                        
+
+
 
                     </p:panelGrid>
 

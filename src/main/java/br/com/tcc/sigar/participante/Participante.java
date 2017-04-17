@@ -48,6 +48,7 @@ public class Participante implements Serializable {
     private String tipo;
 
     public Participante() {
+        this.dataDeNascimento = Calendar.getInstance();
     }
 
     public Integer getIdParticipante() {

@@ -38,6 +38,7 @@ public class Empresa implements Serializable {
     private double faturamento;
 
     public Empresa() {
+        this.dtFundacao=Calendar.getInstance();
     }
 
     public Integer getIdEmpresa() {

@@ -5,6 +5,8 @@
  */
 package br.com.tcc.sigar.util;
 
+import br.com.tcc.sigar.acompanhamento.AcompanhamentoDAO;
+import br.com.tcc.sigar.acompanhamento.AcompanhamentoDAOHibernate;
 import br.com.tcc.sigar.cidade.CidadeDAO;
 import br.com.tcc.sigar.cidade.CidadeDAOHibernate;
 import br.com.tcc.sigar.departamento.DepartamentoDAO;
@@ -13,6 +15,12 @@ import br.com.tcc.sigar.empresa.EmpresaDAO;
 import br.com.tcc.sigar.empresa.EmpresaDAOHibernate;
 import br.com.tcc.sigar.participante.ParticipanteDAO;
 import br.com.tcc.sigar.participante.ParticipanteDAOHibernate;
+import br.com.tcc.sigar.reuniao.ReuniaoDAO;
+import br.com.tcc.sigar.reuniao.ReuniaoDAOHibernate;
+import br.com.tcc.sigar.tarefa.TarefaDAO;
+import br.com.tcc.sigar.tarefa.TarefaDAOHibernate;
+import br.com.tcc.sigar.topico.TopicoDAO;
+import br.com.tcc.sigar.topico.TopicoDAOHibernate;
 
 /**
  *
@@ -43,5 +51,28 @@ public class DAOFactory {
         participanteDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
         return participanteDAO;
     }
+     
+     public static AcompanhamentoDAO criarAcompanhamentoDAO(){
+         AcompanhamentoDAOHibernate acompanhamentoDAO=new AcompanhamentoDAOHibernate();
+        acompanhamentoDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
+        return acompanhamentoDAO;
+    }
     
+      public static ReuniaoDAO criarReuniaoDAO(){
+          ReuniaoDAOHibernate reuniaoDAO=new ReuniaoDAOHibernate();
+        reuniaoDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
+        return reuniaoDAO;
+    }
+      
+      public static TopicoDAO criarTopicoDAO(){
+          TopicoDAOHibernate topicoDAO=new TopicoDAOHibernate();
+        topicoDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
+        return topicoDAO;
+    }
+      
+      public static TarefaDAO criarTarefaDAO(){
+          TarefaDAOHibernate tarefaDAO=new TarefaDAOHibernate();
+        tarefaDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
+        return tarefaDAO;
+    }
 }
