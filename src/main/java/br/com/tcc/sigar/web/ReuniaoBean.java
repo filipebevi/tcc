@@ -11,6 +11,8 @@ import br.com.tcc.sigar.reuniao.Reuniao;
 import br.com.tcc.sigar.reuniao.ReuniaoRN;
 import br.com.tcc.sigar.tarefa.Tarefa;
 import br.com.tcc.sigar.topico.Topico;
+import br.com.tcc.sigar.topico.TopicoRN;
+import java.util.ArrayList;
 
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -35,12 +37,18 @@ public class ReuniaoBean {
     
     private List<Participante> participantes;
     
+    private Topico topico = new Topico();
+    
 
     
     
     public String novo(){
         
         this.reuniao = new Reuniao();
+        
+        this.topico = new Topico();
+        this.topicos = new ArrayList();
+        
         
         return "cadastrarreuniao";
     }
@@ -53,6 +61,14 @@ public class ReuniaoBean {
         return "reuniao";
         
         
+    }
+    
+    public void adicionar(){
+        
+        System.out.println(topico.getAssunto());
+        
+        this.topicos.add(this.topico);
+        System.out.println(this.topicos.size());
     }
 
     public List<Reuniao> getLista() {
@@ -72,6 +88,11 @@ public class ReuniaoBean {
         
         return this.participantes;
     }
+
+    public List<Topico> getTopicos() {
+        return this.topicos;
+    }
+    
     
     
     
@@ -95,5 +116,15 @@ public class ReuniaoBean {
     public void setReuniao(Reuniao reuniao) {
         this.reuniao = reuniao;
     }
+
+    public Topico getTopico() {
+        return topico;
+    }
+
+    public void setTopico(Topico topico) {
+        this.topico = topico;
+    }
+    
+    
     
 }

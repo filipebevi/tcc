@@ -11,37 +11,60 @@
             <f:view>
                 <h:form>
                     <h:inputHidden value="#{reuniaoBean.reuniao.idReuniao}"/>
-                    <h1><h:outputText value="Cadastro de Reunião"/></h1>
+                    <h1>Cadastro de Reunião</h1>
                     <p:panelGrid columns="2">
 
                         <p:outputLabel value="Data:" for="dt" />
                         <p:calendar id="dt" value="#{reuniaoBean.reuniao.dt.time}" pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" disabled="true"/>
 
                         <p:outputLabel value="Assunto:" for="assunto" />
-                        <p:inputText id="assunto" value="#{reuniaoBean.reuniao.assunto}" title="assunto" />
+                        <p:inputText id="assunto" size="50" value="#{reuniaoBean.reuniao.assunto}" title="assunto" />
 
                         <p:outputLabel value="Observação" for="observacao" />
-                        <p:inputText id="observacao" value="#{reuniaoBean.reuniao.observacao}" title="observacao" />
+                        <p:inputTextarea id="observacao" rows="5" cols="50" value="#{reuniaoBean.reuniao.observacao}" queryDelay="750" minQueryLength="4" />
 
                         <h:outputLabel for="participantes" value="Participantes:" />
                         <p:selectCheckboxMenu id="participantes"  value="#{reuniaoBean.reuniao.idParticipantes}" label="Participantes"
                                               filter="true" filterMatchMode="startsWith" panelStyle="width:250px" converter="omnifaces.SelectItemsConverter" multiple="true">
                             <f:selectItems value="#{reuniaoBean.participantes}" var="item" itemValue="#{item}" itemLabel="#{item.nome}" />
                         </p:selectCheckboxMenu>
-                        
-                        
-                        
-                        
 
                     </p:panelGrid>
+                    <h3>Tópicos</h3>
+                    
+                    <p:panelGrid columns="2">
+                        <p:inputText id="assuntotopico" size="50" value="#{reuniaoBean.topico.assunto}" title="assunto" />
+                        <p:inputText id="descricaotopico" size="50" value="#{reuniaoBean.topico.descricao}" title="assunto" />
+                        
+                    <p:commandButton action="#{reuniaoBean.adicionar()}" value="Adicionar"/>    
+                    </p:panelGrid>
+                    
+                    
+                    <p:dataTable value="#{reuniaoBean.topicos}" var="item2" rows="10"
+                                 paginator="true" draggableColumns="true" draggableRows="true"  >
 
 
+                        <p:column sortBy="#{item2.assunto}"
+                                  filterBy="#{item2.assunto}" style="text-align: center">
+                            <f:facet name="header">
+                                <h:outputText value="Assunto"/>
+                            </f:facet>
+                            <h:outputText value="#{item2.assunto}"/>
+                        </p:column>
+                        
+                        <p:column style="text-align: center">
+                            <f:facet name="header">
+                                <h:outputText value="Descrição"/>
+                            </f:facet>
+                            <h:outputText value="#{item2.descricao}"/>
+                        </p:column>
+                        
+                    </p:dataTable>
 
-
-                    <h:form>
-                        <p:commandButton action="#{reuniaoBean.salvar()}" value="Salvar" style="font-size: small" />
-                        <p:commandButton action="funcionario" value="Voltar" style="font-size: small"/>
-                    </h:form>
+                        <h:form>
+                            <p:commandButton action="#{reuniaoBean.salvar()}" value="Salvar" style="font-size: small" />
+                            <p:commandButton action="funcionario" value="Voltar" style="font-size: small"/>
+                        </h:form>
                 </h:form>
 
 

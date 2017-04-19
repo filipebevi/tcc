@@ -12,7 +12,7 @@
             <f:view>
                 <h:form>
                     <h:inputHidden value="#{funcionarioBean.funcionario.idParticipante}"/>
-                    <h1><h:outputText value="Cadastro de Participantes"/></h1>
+                    <h1><h:outputText value="Cadastro de Funcionário"/></h1>
                     <p:panelGrid columns="2">
 
                         <p:outputLabel value="Nome:" for="nome" />
@@ -25,7 +25,7 @@
                         <p:inputText id="email" value="#{funcionarioBean.funcionario.email}" title="email" />
 
                         <p:outputLabel value="Data de Nascimento:" for="nascimento" />
-                        <p:calendar id="nascimento" value="#{funcionarioBean.funcionario.dataDeNascimento.time}" pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+                        <p:calendar id="nascimento"  value="#{funcionarioBean.funcionario.dataDeNascimento.time}" pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
                             
                        
 

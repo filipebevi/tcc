@@ -24,7 +24,7 @@
     
     <context-param>
         <param-name>primefaces.THEME</param-name>
-        <param-value>ui-lightness</param-value>
+        <param-value>delta</param-value>
     </context-param>
     
     <!-- Configuração para o filter do Hibernate, declara o filter ao servidor, 
