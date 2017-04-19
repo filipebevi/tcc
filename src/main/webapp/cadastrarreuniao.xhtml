@@ -24,14 +24,14 @@
                         <p:inputText id="observacao" value="#{reuniaoBean.reuniao.observacao}" title="observacao" />
 
                         <h:outputLabel for="participantes" value="Participantes:" />
-                        <p:selectCheckboxMenu id="participantes" value="#{reuniaoBean.reuniao.idParticipantes}" label="Participantes"
-                                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px" converter="omnifaces.SelectItemsConverter">
+                        <p:selectCheckboxMenu id="participantes"  value="#{reuniaoBean.reuniao.idParticipantes}" label="Participantes"
+                                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px" converter="omnifaces.SelectItemsConverter" multiple="true">
                             <f:selectItems value="#{reuniaoBean.participantes}" var="item" itemValue="#{item}" itemLabel="#{item.nome}" />
                         </p:selectCheckboxMenu>
-
                         
-
-
+                        
+                        
+                        
 
                     </p:panelGrid>
 
