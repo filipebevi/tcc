@@ -8,9 +8,9 @@
     <ui:composition template="menuPrincipal.xhtml">
         <ui:define name="conteudo">
             <f:view>
-                
+
                 <h:form>
-                 
+
                     <p:commandButton action="#{reuniaoBean.novo()}" value="Novo"/>
                     <p:commandButton action="menuPrincipal" value="Voltar" />
 
@@ -34,19 +34,21 @@
                             <p:column sortBy="#{item.assunto}"
                                       filterBy="#{item.assunto}" >
                                 <f:facet name="header">
-                                    <h:outputText value="Nome"/>
+                                    <h:outputText value="Assunto"/>
                                 </f:facet>
                                 <h:outputText value="#{item.assunto}"/>
                             </p:column>
-                            
-                            <p:column sortBy="#{item.dt}"
-                                      filterBy="#{item.dt}" >
+
+                            <p:column sortBy="#{item.dt.time}"
+                                      filterBy="#{item.dt.time}" >
                                 <f:facet name="header">
-                                    <h:outputText value="Matricula"/>
+                                    <h:outputText value="Data"/>
                                 </f:facet>
-                                <h:outputText value="#{item.dt}"/>
+                                <h:outputText value="#{item.dt.time}">
+                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                </h:outputText>
                             </p:column>
-                                                        
+
                             <p:column style="text-align: center">
                                 <f:facet name="header">
                                     <h:outputText value="Editar"/>
@@ -61,7 +63,7 @@
                                 <f:facet name="header">
                                     <h:outputText value="Excluir"/>
                                 </f:facet>
-                                <p:commandLink   action="#{reuniaoBean.excluir()}" onclick="if (!confirm('Confirma a exclusao do participante #{item.nome}?'))
+                                <p:commandLink   action="#{reuniaoBean.excluir()}" onclick="if (!confirm('Confirma a exclusao da Reuniao?'))
                                             return false;"  >
                                     <p:graphicImage library="imagens" name="excluir.png" style="border: 0"/>
                                     <f:setPropertyActionListener target="#{reuniaoBean.reuniao}" value="#{item}"/>

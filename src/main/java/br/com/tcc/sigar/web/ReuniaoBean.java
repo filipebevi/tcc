@@ -5,11 +5,13 @@
  */
 package br.com.tcc.sigar.web;
 
+import br.com.tcc.sigar.participante.Participante;
+import br.com.tcc.sigar.participante.ParticipanteRN;
 import br.com.tcc.sigar.reuniao.Reuniao;
 import br.com.tcc.sigar.reuniao.ReuniaoRN;
 import br.com.tcc.sigar.tarefa.Tarefa;
 import br.com.tcc.sigar.topico.Topico;
-import java.io.Serializable;
+
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -30,6 +32,8 @@ public class ReuniaoBean {
     private List<Tarefa> tarefas;
     
     private List<Topico> topicos;
+    
+    private List<Participante> participantes;
     
 
     
@@ -59,6 +63,17 @@ public class ReuniaoBean {
         
         return this.lista;
     }
+
+    public List<Participante> getParticipantes() {
+        if(this.participantes==null){
+            ParticipanteRN participanteRN = new ParticipanteRN();
+            this.participantes=participanteRN.listar();
+       }
+        
+        return this.participantes;
+    }
+    
+    
     
     
     
