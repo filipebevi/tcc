@@ -9,7 +9,7 @@
         <ui:define name="conteudo">
             <f:view>
                 
-                <h:form>
+                <h:form id="form1">
                     <h1>Cadastro de Convidado</h1>
                     <br/>
                  
@@ -20,8 +20,8 @@
                     <br/>
                     <br/>
                     <br/>
-                    <h:form>
-                        <p:dataTable value="#{convidadoBean.lista}" var="item" rows="10"
+                    <h:form id="form2">
+                        <p:dataTable id="tb1" value="#{convidadoBean.lista}" var="item" rows="10"
                                      paginator="true" draggableColumns="true" draggableRows="true" resizableColumns="true" >
 
 
@@ -81,7 +81,7 @@
                                 <f:facet name="header">
                                     <h:outputText value="Excluir"/>
                                 </f:facet>
-                                <p:commandLink   action="#{convidadoBean.excluir()}" onclick="if (!confirm('Confirma a exclusao do Convidado #{item.nome}?'))
+                                <p:commandLink   action="#{convidadoBean.excluir()}" update=":form1:form2:tb1" onclick="if (!confirm('Confirma a exclusao do Convidado #{item.nome}?'))
                                             return false;"  >
                                     <p:graphicImage library="imagens" name="excluir.png" style="border: 0"/>
                                     <f:setPropertyActionListener target="#{convidadoBean.convidado}" value="#{item}"/>

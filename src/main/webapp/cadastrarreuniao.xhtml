@@ -9,7 +9,7 @@
     <ui:composition template="menuPrincipal.xhtml">
         <ui:define name="conteudo">
             <f:view>
-                <h:form>
+                <h:form id="formulario">
                     <h:inputHidden value="#{reuniaoBean.reuniao.idReuniao}"/>
                     <h1>Cadastro de Reunião</h1>
                     <p:panelGrid columns="2">
@@ -36,11 +36,12 @@
                         <p:inputText id="assuntotopico" size="50" value="#{reuniaoBean.topico.assunto}" title="assunto" />
                         <p:inputText id="descricaotopico" size="50" value="#{reuniaoBean.topico.descricao}" title="assunto" />
                         
-                    <p:commandButton action="#{reuniaoBean.adicionar()}" value="Adicionar"/>    
+                        <p:commandButton action="#{reuniaoBean.adicionar()}" value="Adicionar" update=":formulario:tabela"/>
+                  
                     </p:panelGrid>
                     
                     
-                    <p:dataTable value="#{reuniaoBean.topicos}" var="item2" rows="10"
+                    <p:dataTable id="tabela" value="#{reuniaoBean.topicos}" var="item2" rows="10"
                                  paginator="true" draggableColumns="true" draggableRows="true"  >
 
 

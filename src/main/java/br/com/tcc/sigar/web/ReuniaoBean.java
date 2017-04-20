@@ -11,12 +11,15 @@ import br.com.tcc.sigar.reuniao.Reuniao;
 import br.com.tcc.sigar.reuniao.ReuniaoRN;
 import br.com.tcc.sigar.tarefa.Tarefa;
 import br.com.tcc.sigar.topico.Topico;
-import br.com.tcc.sigar.topico.TopicoRN;
+
+
 import java.util.ArrayList;
 
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import org.omnifaces.util.Messages;
 
 /**
@@ -47,11 +50,13 @@ public class ReuniaoBean {
         this.reuniao = new Reuniao();
         
         this.topico = new Topico();
-        this.topicos = new ArrayList();
+       
         
         
         return "cadastrarreuniao";
     }
+    
+   
     
     public String salvar(){
         ReuniaoRN reuniaoRN = new ReuniaoRN();
@@ -65,10 +70,22 @@ public class ReuniaoBean {
     
     public void adicionar(){
         
-        System.out.println(topico.getAssunto());
-        
+        if(this.topicos == null) {
+            System.out.println("novvo array");
+            this.topicos = new ArrayList<>();
+        }
+
         this.topicos.add(this.topico);
+        
+        
+        System.out.println(this.topico.getAssunto());
+        
+
         System.out.println(this.topicos.size());
+        
+        this.topico=new Topico();
+        
+        
     }
 
     public List<Reuniao> getLista() {
