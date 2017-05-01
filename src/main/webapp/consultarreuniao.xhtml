@@ -10,44 +10,30 @@
         <ui:define name="conteudo">
             <f:view>
                 <h:form id="formulario">
-                    <h:inputHidden value="#{reuniaoBean.reuniao.idReuniao}"/>
-                    <h1>Cadastro de Reunião</h1>
+                    <h:inputHidden value="#{reuniaoConsultaBean.reuniao.idReuniao}" />
+                    <h1>Consulta de Reunião</h1>
                     <p:panelGrid columns="2">
 
                         <p:outputLabel value="Data:" for="dt" />
-                        <p:calendar id="dt" value="#{reuniaoBean.reuniao.dt.time}" pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" disabled="true"/>
+                        <p:calendar id="dt"  value="#{reuniaoConsultaBean.reuniao.dt.time}" pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" disabled="true"/>
 
                         <p:outputLabel value="Assunto:" for="assunto" />
-                        <p:inputText id="assunto" size="50" value="#{reuniaoBean.reuniao.assunto}" title="assunto" />
+                        <p:inputText disabled="true" id="assunto" size="50" value="#{reuniaoConsultaBean.reuniao.assunto}" title="assunto" />
 
                         <p:outputLabel value="Observação" for="observacao" />
-                        <p:inputTextarea id="observacao" rows="5" cols="50" value="#{reuniaoBean.reuniao.observacao}" queryDelay="750" minQueryLength="4" />
+                        <p:inputTextarea disabled="true" id="observacao" rows="5" cols="50" value="#{reuniaoConsultaBean.reuniao.observacao}" queryDelay="750" minQueryLength="4" />
 
                         <h:outputLabel for="participantes" value="Participantes:" />
-                        <p:selectCheckboxMenu id="participantes"  value="#{reuniaoBean.reuniao.idParticipantes}"  label="Participantes"
+                        <p:selectCheckboxMenu disabled="true" id="participantes"  value="#{reuniaoConsultaBean.reuniao.idParticipantes}"  label="Participantes"
                                               filter="true" filterMatchMode="startsWith" panelStyle="width:250px" converter="omnifaces.SelectItemsConverter" multiple="true">
-                            <f:selectItems value="#{reuniaoBean.participantes}" var="item" itemValue="#{item}" itemLabel="#{item.nome}" />
+                            <f:selectItems value="#{reuniaoConsultaBean.reuniao.idParticipantes}" var="item" itemValue="#{item}" itemLabel="#{item.nome}" />
                         </p:selectCheckboxMenu>
 
                     </p:panelGrid>
                     <h3>Tópicos</h3>
 
-                    <p:panelGrid columns="2">
-                        <p:outputLabel for="assuntolista" value="Assunto:"/>
-                        <p:inputText id="assuntolista" size="50" value="#{reuniaoBean.topico.assunto}" title="assunto" />
-                        <p:outputLabel for="descricaolista" value="Descriação:"/>
-                        <p:inputTextarea rows="5" cols="50" id="descricaolista" value="#{reuniaoBean.topico.descricao}" title="assunto" />
-                        <p:selectOneMenu  id="participanteslista"   value="#{reuniaoBean.topico.idParticipante}" converter="omnifaces.SelectItemsConverter">
-                            <f:selectItem itemValue="#{null}" itemLabel="Escolha um Item" noSelectionOption="true" />
-                            <f:selectItems  value="#{reuniaoBean.participantes}" var="item" itemValue="#{item}" itemLabel="#{item.nome}"/>
-                        </p:selectOneMenu>
-                        <p:commandButton action="#{reuniaoBean.adicionarTopico()}" value="Adicionar" update=":formulario:tabela"/>
 
-
-                    </p:panelGrid>
-
-
-                    <p:dataTable id="tabela" value="#{reuniaoBean.reuniao.idTopico}" var="item2" rows="10"
+                    <p:dataTable id="tabela" value="#{reuniaoConsultaBean.reuniao.idTopico}" var="item2" rows="10"
                                  paginator="true" draggableColumns="true" draggableRows="true"  >
 
 
@@ -78,26 +64,10 @@
 
                     <h3>Tarefas</h3>
 
-                    <p:panelGrid columns="2">
-                        <p:outputLabel for="descricaotarefa" value="Descrição:"/>
-                        <p:inputText id="descricaotarefa" size="50" value="#{reuniaoBean.tarefa.descricao}" title="Descricao" />
-
-                        <p:outputLabel for="quem" value="Quem?"/>
-                        <p:selectOneMenu  id="quem"   value="#{reuniaoBean.tarefa.idParticipante}" converter="omnifaces.SelectItemsConverter">
-                            <f:selectItem itemValue="#{null}" itemLabel="Escolha um Item" noSelectionOption="true" />
-                            <f:selectItems  value="#{reuniaoBean.participantes}" var="item" itemValue="#{item}" itemLabel="#{item.nome}"/>
-                        </p:selectOneMenu>
-
-                        <p:outputLabel for="previsao" value="Quando?" />
-                        <p:calendar id="previsao" value="#{reuniaoBean.tarefa.previsao.time}" pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
-
-                        <p:commandButton action="#{reuniaoBean.adicionarTarefa()}" value="Adicionar" update=":formulario:tabelatarefa"/>
+                    
 
 
-                    </p:panelGrid>
-
-
-                    <p:dataTable id="tabelatarefa" value="#{reuniaoBean.reuniao.idTarefa}" var="item3" rows="10"
+                    <p:dataTable id="tabelatarefa" value="#{reuniaoConsultaBean.reuniao.idTarefa}" var="item3" rows="10"
                                  paginator="true" draggableColumns="true" draggableRows="true"  >
 
 
@@ -128,7 +98,7 @@
                     </p:dataTable>
 
                     <h:form>
-                        <p:commandButton action="#{reuniaoBean.salvar()}" value="Salvar" style="font-size: small" />
+                       
                         <p:commandButton action="reuniao" value="Voltar" style="font-size: small"/>
                     </h:form>
                 </h:form>

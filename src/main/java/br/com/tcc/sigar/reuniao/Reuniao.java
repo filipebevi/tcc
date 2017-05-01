@@ -12,13 +12,17 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 /**
  *
@@ -35,10 +39,11 @@ public class Reuniao implements Serializable {
     private Calendar dt;
     private String observacao;
     @ManyToMany
+    
     private List<Participante> idParticipantes;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Tarefa> idTarefa;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Topico> idTopico;
 
     public Reuniao() {
@@ -154,7 +159,5 @@ public class Reuniao implements Serializable {
         }
         return true;
     }
-    
-    
 
 }

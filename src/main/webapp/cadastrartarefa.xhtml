@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+
+    <ui:composition template="menuPrincipal.xhtml">
+        <ui:define name="conteudo">
+            <f:view>
+                <h:form>
+                    <h:inputHidden value="#{tarefaBean.tarefa.idTarefa}"/>
+                    <h1><h:outputText value="Cadastro de Tarefas"/></h1>
+                    <p:panelGrid columns="2">
+
+                        <p:outputLabel value="Descricao: " for="descricao" />
+                        <p:inputText id="descricao" value="#{tarefaBean.tarefa.descricao}" title="descricao" />
+
+                        <p:outputLabel value="Previsão: " for="previsao" />
+                        <p:calendar id="previsao" value="#{tarefaBean.tarefa.previsao.time}" pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+
+                        <p:outputLabel value="Participante:" for="participante" />
+                        <p:selectOneMenu  id="participante"   value="#{tarefaBean.tarefa.idParticipante}" converter="omnifaces.SelectItemsConverter">
+                            <f:selectItem itemValue="#{null}" itemLabel="Escolha um Item" noSelectionOption="true" />
+                            <f:selectItems  value="#{reuniaoBean.participantes}" var="item" itemValue="#{item}" itemLabel="#{item.nome}"/>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="Data de Conclusão:" for="conclusao" />
+                        <p:calendar id="conclusao"  value="#{tarefaBean.tarefa.conclusao.time}" pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
+                         
+                    </p:panelGrid>
+
+                    <h:form>
+                        <p:commandButton action="#{tarefaBean.salvar()}" value="Salvar" style="font-size: small" />
+                        <p:commandButton action="tarefa" value="Voltar" style="font-size: small"/>
+                    </h:form>
+                </h:form>
+
+
+
+
+
+
+            </f:view>
+
+        </ui:define>
+    </ui:composition>
+
+</html>

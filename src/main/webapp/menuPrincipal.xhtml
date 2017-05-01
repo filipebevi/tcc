@@ -53,8 +53,9 @@
 
                             </p:submenu>
                             <p:submenu label="Reunião">
-                                <p:menuitem value="Criar" url="reuniao.jsf" />
-                                <p:menuitem value="Consultar" url="http://www.primefaces.org/documentation.html" />
+                                <p:menuitem value="Cria Reunião" url="cadastrarreuniao.jsf" actionListener="#{reuniaoBean.novo()}" />
+                                <p:menuitem value="Consultar Reunião" url="reuniao.jsf" />
+                                <p:menuitem value="Tarefa" url="tarefa.jsf" />
 
 
                             </p:submenu>
@@ -68,6 +69,7 @@
                             <ui:insert name="conteudo"/> 
                         </div>
                     </p:layoutUnit>
+                     
 
                 </p:layout>
             </div>
