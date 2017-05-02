@@ -7,6 +7,8 @@ package br.com.tcc.sigar.tarefa;
 
 
 import java.util.List;
+import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -83,20 +85,11 @@ public class TarefaDAOHibernate implements TarefaDAO {
     
     @Override
     public List<Tarefa> listar() {
-        List <Tarefa> lista=this.session.createCriteria(Tarefa.class).list();
         
-       
-            
-            for (int i = 0; i < lista.size(); i++) {
-                
-                System.out.println(lista.get(i).getDescricao());
-            
-        }
-            
+        Criteria criteria = this.session.createCriteria(Tarefa.class);
+        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         
-            
-        
-       
+        List <Tarefa> lista= criteria.list();
         
         return lista;
     }

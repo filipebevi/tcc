@@ -30,25 +30,31 @@
                         </p:selectCheckboxMenu>
 
                     </p:panelGrid>
+
                     <h3>Tópicos</h3>
 
-                    <p:panelGrid columns="2">
+                    <p:panelGrid id="topico" columns="2">
                         <p:outputLabel for="assuntolista" value="Assunto:"/>
                         <p:inputText id="assuntolista" size="50" value="#{reuniaoBean.topico.assunto}" title="assunto" />
                         <p:outputLabel for="descricaolista" value="Descriação:"/>
                         <p:inputTextarea rows="5" cols="50" id="descricaolista" value="#{reuniaoBean.topico.descricao}" title="assunto" />
+                        <p:outputLabel for="participanteslista" value="Participantes:"/>
                         <p:selectOneMenu  id="participanteslista"   value="#{reuniaoBean.topico.idParticipante}" converter="omnifaces.SelectItemsConverter">
                             <f:selectItem itemValue="#{null}" itemLabel="Escolha um Item" noSelectionOption="true" />
                             <f:selectItems  value="#{reuniaoBean.participantes}" var="item" itemValue="#{item}" itemLabel="#{item.nome}"/>
                         </p:selectOneMenu>
-                        <p:commandButton action="#{reuniaoBean.adicionarTopico()}" value="Adicionar" update=":formulario:tabela"/>
+                        <p:commandButton action="#{reuniaoBean.adicionarTopico()}" value="Adicionar" update=":formulario:tabela, :formulario:topico"/>
 
 
                     </p:panelGrid>
+                    <br/>
 
 
                     <p:dataTable id="tabela" value="#{reuniaoBean.reuniao.idTopico}" var="item2" rows="10"
                                  paginator="true" draggableColumns="true" draggableRows="true"  >
+                        <f:facet name="header">
+                            Lista de Tópicos
+                        </f:facet>
 
 
                         <p:column sortBy="#{item2.assunto}"
@@ -73,12 +79,23 @@
                             <h:outputText value="#{item2.idParticipante.nome}"/>
                         </p:column>
 
+                        <p:column style="text-align: center">
+                            <f:facet name="header">
+                                <h:outputText value="Excluir"/>
+                            </f:facet>
+                            <p:commandButton  icon="ui-icon-trash"  update=":formulario:tabela" action="#{reuniaoBean.removerTopico()}" >
+
+                                <f:setPropertyActionListener target="#{reuniaoBean.topico}" value="#{item2}"/>
+
+                            </p:commandButton>    
+                        </p:column>
+
                     </p:dataTable>
 
 
                     <h3>Tarefas</h3>
 
-                    <p:panelGrid columns="2">
+                    <p:panelGrid id="tarefa" columns="2" >
                         <p:outputLabel for="descricaotarefa" value="Descrição:"/>
                         <p:inputText id="descricaotarefa" size="50" value="#{reuniaoBean.tarefa.descricao}" title="Descricao" />
 
@@ -91,14 +108,18 @@
                         <p:outputLabel for="previsao" value="Quando?" />
                         <p:calendar id="previsao" value="#{reuniaoBean.tarefa.previsao.time}" pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
 
-                        <p:commandButton action="#{reuniaoBean.adicionarTarefa()}" value="Adicionar" update=":formulario:tabelatarefa"/>
+                        <p:commandButton action="#{reuniaoBean.adicionarTarefa()}" value="Adicionar" update=":formulario:tabelatarefa, :formulario:tarefa"/>
 
 
                     </p:panelGrid>
+                    <br/>
 
 
                     <p:dataTable id="tabelatarefa" value="#{reuniaoBean.reuniao.idTarefa}" var="item3" rows="10"
                                  paginator="true" draggableColumns="true" draggableRows="true"  >
+                        <f:facet name="header">
+                            Lista de Tarefas
+                        </f:facet>
 
 
                         <p:column sortBy="#{item3.descricao}"
@@ -123,6 +144,17 @@
                                 <h:outputText value="Participante"/>
                             </f:facet>
                             <h:outputText value="#{item3.idParticipante.nome}"/>
+                        </p:column>
+
+                        <p:column style="text-align: center">
+                            <f:facet name="header">
+                                <h:outputText value="Excluir"/>
+                            </f:facet>
+                            <p:commandButton  icon="ui-icon-trash" update=":formulario:tabelatarefa" action="#{reuniaoBean.removerTarefa()}" >
+
+                                <f:setPropertyActionListener target="#{reuniaoBean.tarefa}" value="#{item3}"/>
+
+                            </p:commandButton>    
                         </p:column>
 
                     </p:dataTable>

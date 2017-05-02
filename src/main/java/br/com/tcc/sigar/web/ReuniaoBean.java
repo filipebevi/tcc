@@ -75,6 +75,14 @@ public class ReuniaoBean implements Serializable{
         
     }
     
+    public void removerTopico(){
+        this.reuniao.getIdTopico().remove(topico);
+    }
+    
+    public void removerTarefa(){
+        this.reuniao.getIdTarefa().remove(tarefa);
+    }
+    
     public void adicionarTarefa() {
 
         if (this.reuniao.getIdTarefa()== null) {

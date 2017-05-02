@@ -24,7 +24,7 @@ import org.omnifaces.util.Messages;
  * @author Flipe
  */
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class TarefaBean implements Serializable{
     
     private Tarefa tarefa = new Tarefa();
@@ -59,10 +59,10 @@ public class TarefaBean implements Serializable{
     }
 
     public List<Tarefa> getLista() {
-       if(this.lista==null){
+     
             TarefaRN tarefaRN = new TarefaRN();
             this.lista=tarefaRN.listar();
-       }
+       
         
         return this.lista;
     }

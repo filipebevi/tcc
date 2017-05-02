@@ -38,7 +38,7 @@ public class Tarefa implements Serializable {
     private Calendar conclusao;
     @ManyToOne
     private Participante idParticipante;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Acompanhamento> idAcompanhamento;
 
     public Tarefa() {
