@@ -62,10 +62,10 @@
                                 <f:facet name="header">
                                     <h:outputText value="Excluir"/>
                                 </f:facet>
-                                <p:commandLink  update=":form1:form2:tabela" action="#{reuniaoConsultarBean.excluir()}" onclick="if (!confirm('Confirma a exclusao da Reuniao?'))
+                                <p:commandLink  update=":form1:form2:tabela" action="#{reuniaoConsultaBean.excluir()}" onclick="if (!confirm('Confirma a exclusao da Reuniao?'))
                                             return false;"  >
                                     <p:graphicImage library="imagens" name="excluir.png" style="border: 0"/>
-                                    <f:setPropertyActionListener target="#{reuniaoConsultarBean.reuniao}" value="#{item}"/>
+                                    <f:setPropertyActionListener target="#{reuniaoConsultaBean.reuniao}" value="#{item}"/>
 
 
                                 </p:commandLink>    

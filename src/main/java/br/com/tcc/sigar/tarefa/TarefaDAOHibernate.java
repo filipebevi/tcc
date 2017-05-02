@@ -83,7 +83,22 @@ public class TarefaDAOHibernate implements TarefaDAO {
     
     @Override
     public List<Tarefa> listar() {
-        return this.session.createCriteria(Tarefa.class).list();
+        List <Tarefa> lista=this.session.createCriteria(Tarefa.class).list();
+        
+       
+            
+            for (int i = 0; i < lista.size(); i++) {
+                
+                System.out.println(lista.get(i).getDescricao());
+            
+        }
+            
+        
+            
+        
+       
+        
+        return lista;
     }
     
 }

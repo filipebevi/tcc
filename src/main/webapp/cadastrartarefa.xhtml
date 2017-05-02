@@ -27,13 +27,12 @@
                             <f:selectItems  value="#{reuniaoBean.participantes}" var="item" itemValue="#{item}" itemLabel="#{item.nome}"/>
                         </p:selectOneMenu>
 
-                        <p:outputLabel value="Data de Conclusão:" for="conclusao" />
-                        <p:calendar id="conclusao"  value="#{tarefaBean.tarefa.conclusao.time}" pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
+                        
                          
                     </p:panelGrid>
 
                     <h:form>
-                        <p:commandButton action="#{tarefaBean.salvar()}" value="Salvar" style="font-size: small" />
+                        <p:commandButton action="#{tarefaBean.salvar()}" value="Salvar" style="font-size: small" update="" />
                         <p:commandButton action="tarefa" value="Voltar" style="font-size: small"/>
                     </h:form>
                 </h:form>

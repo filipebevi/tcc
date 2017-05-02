@@ -8,54 +8,55 @@
         <ui:define name="conteudo">
             <f:view>
 
-                <h:form>
+                <h:form id="id1">
                     <h1>Cadastro de Tarefas</h1>
                     <br/>
 
                     <p:commandButton action="#{tarefaBean.novo()}" value="Novo"/>
                     <p:commandButton action="menuPrincipal" value="Voltar" />
+                    
 
 
                     <br/>
                     <br/>
                     <br/>
-                    <h:form>
-                        <p:dataTable value="#{tarefaBean.lista}" var="item" rows="10"
+                    <h:form id="id2">
+                        <p:dataTable id="id3" value="#{tarefaBean.lista}" var="tarefa" rows="10"
                                      paginator="true" draggableColumns="true" draggableRows="true"  >
 
 
-                            <p:column sortBy="#{item.descricao}"
-                                      filterBy="#{item.descricao}" style="text-align: center">
+                            <p:column sortBy="#{tarefa.descricao}"
+                                      filterBy="#{tarefa.descricao}" style="text-align: center">
                                 <f:facet name="header">
                                     <h:outputText value="Descrição"/>
                                 </f:facet>
-                                <h:outputText value="#{item.descricao}"/>
+                                <h:outputText value="#{tarefa.descricao}"/>
                             </p:column>
 
-                            <p:column sortBy="#{item.previsao.time}"
-                                      filterBy="#{item.previsao.time}" >
+                            <p:column sortBy="#{tarefa.previsao.time}"
+                                      filterBy="#{tarefa.previsao.time}" >
                                 <f:facet name="header">
                                     <h:outputText value="Data Prevista"/>
                                 </f:facet>
-                                <h:outputText value="#{item.previsao.time}">
+                                <h:outputText value="#{tarefa.previsao.time}">
                                     <f:convertDateTime pattern="dd/MM/yyyy"/>
                                 </h:outputText>
                             </p:column>
 
-                            <p:column sortBy="#{item.idParticipante}"
-                                      filterBy="#{item.idParticipante}" >
+                            <p:column sortBy="#{tarefa.idParticipante}"
+                                      filterBy="#{tarefa.idParticipante}" >
                                 <f:facet name="header">
                                     <h:outputText value="Participante"/>
                                 </f:facet>
-                                <h:outputText value="#{item.idParticipante.nome}"/>
+                                <h:outputText value="#{tarefa.idParticipante.nome}"/>
                             </p:column>
 
-                            <p:column sortBy="#{item.conclusao.time}"
-                                      filterBy="#{item.conclusao.time}" >
+                            <p:column sortBy="#{tarefa.conclusao.time}"
+                                      filterBy="#{tarefa.conclusao.time}" >
                                 <f:facet name="header">
                                     <h:outputText value="Data de Conclusão"/>
                                 </f:facet>
-                                <h:outputText value="#{item.conclusao.time}">
+                                <h:outputText value="#{tarefa.conclusao.time}">
                                     <f:convertDateTime pattern="dd/MM/yyyy"/>
                                 </h:outputText>
                             </p:column>
@@ -68,7 +69,7 @@
                                 </f:facet>
                                 <p:commandLink action="#{tarefaBean.editar()}">
                                     <p:graphicImage library="imagens" name="editar.png" style="border: 0"/>
-                                    <f:setPropertyActionListener target="#{tarefaBean.tarefa}" value="#{item}"/>
+                                    <f:setPropertyActionListener target="#{tarefaBean.tarefa}" value="#{tarefa}"/>
                                 </p:commandLink>    
                             </p:column>
 
@@ -77,9 +78,9 @@
                                     <h:outputText value="Excluir"/>
                                 </f:facet>
                                 <p:commandLink   action="#{tarefaBean.excluir()}" onclick="if (!confirm('Confirma a exclusao da tarefa'))
-                                            return false;"  >
+                                    return false;" update=":id1:id2:id3"  >
                                     <p:graphicImage library="imagens" name="excluir.png" style="border: 0"/>
-                                    <f:setPropertyActionListener target="#{tarefaBean.tarefa}" value="#{item}"/>
+                                    <f:setPropertyActionListener target="#{tarefaBean.tarefa}" value="#{tarefa}"/>
 
 
                                 </p:commandLink>    

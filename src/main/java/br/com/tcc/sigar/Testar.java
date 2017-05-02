@@ -7,6 +7,8 @@ package br.com.tcc.sigar;
 
 import br.com.tcc.sigar.cidade.Cidade;
 import br.com.tcc.sigar.cidade.CidadeRN;
+import br.com.tcc.sigar.tarefa.Tarefa;
+import br.com.tcc.sigar.tarefa.TarefaRN;
 import org.primefaces.expression.impl.ThisExpressionResolver;
 
 /**
@@ -24,16 +26,9 @@ public class Testar {
         // TODO code application logic here
         
         
-        CidadeRN teste=new CidadeRN();
-        Cidade cuca=new Cidade();
+        TarefaRN tarefaRN = new TarefaRN();
         
-        cuca.setArea(122);
-        cuca.setComentario("teste");
-        cuca.setNome("Recife");
-        cuca.setUf("PE");
-        cuca.setMetropole(true);
-        
-        teste.salvar(cuca);
+        tarefaRN.listar();
     }
     
 

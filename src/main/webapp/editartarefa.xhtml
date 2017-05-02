@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+
+    <ui:composition template="menuPrincipal.xhtml">
+        <ui:define name="conteudo">
+            <f:view>
+                <h:form id="principal">
+
+                    <h1><h:outputText value="Cadastro de Tarefas"/></h1>
+                    <p:panelGrid columns="2">
+
+                        <p:outputLabel value="Código: " for="codigo" />
+                        <p:inputText id="codigo" disabled="true" value="#{tarefaBean.tarefa.idTarefa}"/>
+
+                        <p:outputLabel value="Descricao: " for="descricao" />
+                        <p:inputText id="descricao" value="#{tarefaBean.tarefa.descricao}" title="descricao" disabled="true" />
+
+                        <p:outputLabel value="Previsão: " for="previsao" />
+                        <p:inputText id="previsao" value="#{tarefaBean.tarefa.previsao.time}" disabled="true" />
+
+                        <p:outputLabel value="Participante:" for="participante" />
+                        <p:selectOneMenu  id="participante"   value="#{tarefaBean.tarefa.idParticipante}" converter="omnifaces.SelectItemsConverter" disabled="true">
+                            <f:selectItem itemValue="#{null}" itemLabel="Escolha um Item" noSelectionOption="true" />
+                            <f:selectItems  value="#{reuniaoBean.participantes}" var="item" itemValue="#{item}" itemLabel="#{item.nome}"/>
+                        </p:selectOneMenu>
+
+                       
+
+                    </p:panelGrid>
+
+                    <h1>Acompanhamento</h1>
+
+                    <h:form id="formacompanhamento">
+                        <p:panelGrid columns="2">
+                            <p:outputLabel for="descri" value="Descrição"/>
+                            <p:inputText id="descri" value="#{tarefaBean.acompanhamento.descricao}"/>
+
+                            <p:outputLabel for="participante2" value="Participante: "/>
+                            <p:selectOneMenu  id="participante2"   value="#{tarefaBean.acompanhamento.idParticipante}" converter="omnifaces.SelectItemsConverter" >
+                                <f:selectItem itemValue="#{null}" itemLabel="Escolha um Item" noSelectionOption="true" />
+                                <f:selectItems  value="#{reuniaoBean.participantes}" var="item2" itemValue="#{item2}" itemLabel="#{item2.nome}"/>
+                            </p:selectOneMenu>
+                        </p:panelGrid>
+                        <p:commandButton value="Adicionar" action="#{tarefaBean.adicionar()}" update=":principal:formacompanhamento:tabelaacompanhamento"/>
+                        <br/>
+                        <br/>
+                        <p:dataTable rows="10" id="tabelaacompanhamento" paginator="true" value="#{tarefaBean.tarefa.idAcompanhamento}" var="acompanhamento">
+                            <p:column style="text-align: center">
+                                <f:facet name="header">
+                                    <h:outputText value="Data"/>
+                                </f:facet>
+                                <h:outputText value="#{acompanhamento.dt.time}"/>
+                            </p:column>
+
+                            <p:column style="text-align: center">
+                                <f:facet name="header">
+                                    <h:outputText value="Descrição"/>
+                                </f:facet>
+                                <h:outputText value="#{acompanhamento.descricao}"/>
+                            </p:column>
+
+                            <p:column style="text-align: center">
+                                <f:facet name="header">
+                                    <h:outputText value="Participante"/>
+                                </f:facet>
+                                <h:outputText value="#{acompanhamento.idParticipante.nome}"/>
+                            </p:column>
+
+
+                        </p:dataTable>
+
+
+
+
+
+
+
+
+                        <p:commandButton action="#{tarefaBean.salvar()}" value="Salvar" style="font-size: small"  />
+                    </h:form>
+
+                    <h:form>
+
+                        <p:commandButton action="tarefa" value="Voltar" style="font-size: small"/>
+                    </h:form>
+                </h:form>
+
+
+
+
+
+
+            </f:view>
+
+        </ui:define>
+    </ui:composition>
+
+</html>

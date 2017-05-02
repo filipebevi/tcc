@@ -11,7 +11,9 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -36,12 +38,12 @@ public class Tarefa implements Serializable {
     private Calendar conclusao;
     @ManyToOne
     private Participante idParticipante;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Acompanhamento> idAcompanhamento;
 
     public Tarefa() {
         this.previsao = Calendar.getInstance();
-        this.conclusao = Calendar.getInstance();
+        this.conclusao = null;
     }
 
     public Integer getIdTarefa() {
