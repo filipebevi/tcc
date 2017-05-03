@@ -65,26 +65,23 @@
 
                             <p:column style="text-align: center">
                                 <f:facet name="header">
-                                    <h:outputText value="Editar"/>
+                                    <h:outputText value="Editar/Excluir"/>
                                 </f:facet>
-                                <p:commandLink action="#{tarefaBean.editar()}">
-                                    <p:graphicImage library="imagens" name="editar.png" style="border: 0"/>
+                                
+                                <p:commandButton icon="ui-icon-pencil" action="#{tarefaBean.editar()}">
+                                    
                                     <f:setPropertyActionListener target="#{tarefaBean.tarefa}" value="#{tarefa}"/>
-                                </p:commandLink>    
-                            </p:column>
-
-                            <p:column style="text-align: center">
-                                <f:facet name="header">
-                                    <h:outputText value="Excluir"/>
-                                </f:facet>
-                                <p:commandLink   action="#{tarefaBean.excluir()}" onclick="if (!confirm('Confirma a exclusao da tarefa'))
+                                </p:commandButton>  
+                                
+                                <p:commandButton  icon="ui-icon-trash" action="#{tarefaBean.excluir()}" onclick="if (!confirm('Confirma a exclusao da tarefa'))
                                     return false;" update=":id1:id2:id3"  >
-                                    <p:graphicImage library="imagens" name="excluir.png" style="border: 0"/>
+                                    
                                     <f:setPropertyActionListener target="#{tarefaBean.tarefa}" value="#{tarefa}"/>
 
-
-                                </p:commandLink>    
+                                </p:commandButton> 
                             </p:column>
+
+                            
 
                             <f:facet name="footer">
                                 <h:outputText value="Existem " />

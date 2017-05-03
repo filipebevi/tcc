@@ -8,11 +8,11 @@
     <ui:composition template="menuPrincipal.xhtml">
         <ui:define name="conteudo">
             <f:view>
-                
+
                 <h:form>
                     <h1>Cadastro de Departamento</h1>
                     <br/>
-                 
+
                     <p:commandButton action="#{departamentoBean.novo()}" value="Novo"/>
                     <p:commandButton action="menuPrincipal" value="Voltar" />
 
@@ -45,26 +45,22 @@
 
                             <p:column style="text-align: center">
                                 <f:facet name="header">
-                                    <h:outputText value="Editar"/>
+                                    <h:outputText value="Editar/Excluir"/>
                                 </f:facet>
-                                <p:commandLink action="#{departamentoBean.editar()}">
-                                    <p:graphicImage library="imagens" name="editar.png" style="border: 0"/>
+                                <p:commandButton icon="ui-icon-pencil" action="#{departamentoBean.editar()}">
+                                    
                                     <f:setPropertyActionListener target="#{departamentoBean.departamento}" value="#{item}"/>
-                                </p:commandLink>    
-                            </p:column>
-
-                            <p:column style="text-align: center">
-                                <f:facet name="header">
-                                    <h:outputText value="Excluir"/>
-                                </f:facet>
-                                <p:commandLink   action="#{departamentoBean.excluir()}" onclick="if (!confirm('Confirma a exclusao do departamento #{item.nome}?'))
+                                </p:commandButton> 
+                                <p:commandButton  icon="ui-icon-trash" action="#{departamentoBean.excluir()}" onclick="if (!confirm('Confirma a exclusao do departamento #{item.nome}?'))
                                             return false;"  >
-                                    <p:graphicImage library="imagens" name="excluir.png" style="border: 0"/>
+
                                     <f:setPropertyActionListener target="#{departamentoBean.departamento}" value="#{item}"/>
 
 
-                                </p:commandLink>    
+                                </p:commandButton> 
                             </p:column>
+
+
 
                             <f:facet name="footer">
                                 <h:outputText value="Existem " />

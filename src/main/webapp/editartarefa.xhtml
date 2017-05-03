@@ -30,7 +30,7 @@
                             <f:selectItems  value="#{reuniaoBean.participantes}" var="item" itemValue="#{item}" itemLabel="#{item.nome}"/>
                         </p:selectOneMenu>
 
-                       
+
 
                     </p:panelGrid>
 
@@ -39,7 +39,7 @@
                     <h:form id="formacompanhamento">
                         <p:panelGrid columns="2">
                             <p:outputLabel for="descri" value="Descrição"/>
-                            <p:inputText id="descri" value="#{tarefaBean.acompanhamento.descricao}"/>
+                            <p:inputText id="descri" value="#{tarefaBean.acompanhamento.descricao}" />
 
                             <p:outputLabel for="participante2" value="Participante: "/>
                             <p:selectOneMenu  id="participante2"   value="#{tarefaBean.acompanhamento.idParticipante}" converter="omnifaces.SelectItemsConverter" >
@@ -47,7 +47,7 @@
                                 <f:selectItems  value="#{reuniaoBean.participantes}" var="item2" itemValue="#{item2}" itemLabel="#{item2.nome}"/>
                             </p:selectOneMenu>
                         </p:panelGrid>
-                        <p:commandButton value="Adicionar" action="#{tarefaBean.adicionar()}" update=":principal:formacompanhamento:tabelaacompanhamento"/>
+                        <p:commandButton value="Adicionar" action="#{tarefaBean.adicionar()}" update=":principal:formacompanhamento:tabelaacompanhamento, :mensagem"/>
                         <br/>
                         <br/>
                         <p:dataTable rows="10" id="tabelaacompanhamento" paginator="true" value="#{tarefaBean.tarefa.idAcompanhamento}" var="acompanhamento">
@@ -55,7 +55,9 @@
                                 <f:facet name="header">
                                     <h:outputText value="Data"/>
                                 </f:facet>
-                                <h:outputText value="#{acompanhamento.dt.time}"/>
+                                <h:outputText value="#{acompanhamento.dt.time}">
+                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                </h:outputText>
                             </p:column>
 
                             <p:column style="text-align: center">
@@ -83,12 +85,10 @@
 
 
                         <p:commandButton action="#{tarefaBean.salvar()}" value="Salvar" style="font-size: small"  />
-                    </h:form>
-
-                    <h:form>
-
                         <p:commandButton action="tarefa" value="Voltar" style="font-size: small"/>
                     </h:form>
+
+
                 </h:form>
 
 

@@ -8,11 +8,11 @@
     <ui:composition template="menuPrincipal.xhtml">
         <ui:define name="conteudo">
             <f:view>
-                
+
                 <h:form>
                     <h1>Cadastro de Empresa</h1>
                     <br/>
-                 
+
                     <p:commandButton action="#{empresaBean.novo()}" value="Novo"/>
                     <p:commandButton action="menuPrincipal" value="Voltar" />
 
@@ -33,7 +33,7 @@
                                 <h:outputText value="#{item.idEmpresa}"/>
                             </p:column>
 
-                            <p:column sortBy="#{item.nome}"
+                            <p:column 
                                       filterBy="#{item.nome}" >
                                 <f:facet name="header">
                                     <h:outputText value="Nome"/>
@@ -45,26 +45,22 @@
 
                             <p:column style="text-align: center">
                                 <f:facet name="header">
-                                    <h:outputText value="Editar"/>
+                                    <h:outputText value="Editar/Excluir"/>
                                 </f:facet>
-                                <p:commandLink action="#{empresaBean.editar()}">
-                                    <p:graphicImage library="imagens" name="editar.png" style="border: 0"/>
-                                    <f:setPropertyActionListener target="#{empresaBean.empresa}" value="#{item}"/>
-                                </p:commandLink>    
-                            </p:column>
+                                <p:commandButton icon="ui-icon-pencil" action="#{empresaBean.editar()}">
 
-                            <p:column style="text-align: center">
-                                <f:facet name="header">
-                                    <h:outputText value="Excluir"/>
-                                </f:facet>
-                                <p:commandLink   action="#{empresaBean.excluir()}" onclick="if (!confirm('Confirma a exclusao da empresa #{item.nome}?'))
-                                            return false;"  >
-                                    <p:graphicImage library="imagens" name="excluir.png" style="border: 0"/>
+                                    <f:setPropertyActionListener target="#{empresaBean.empresa}" value="#{item}"/>
+                                </p:commandButton>  
+                                <p:commandButton icon="ui-icon-trash"  action="#{empresaBean.excluir()}" onclick="if (!confirm('Confirma a exclusao da empresa #{item.nome}?'))
+                                             return false;"  >
+
                                     <f:setPropertyActionListener target="#{empresaBean.empresa}" value="#{item}"/>
 
 
-                                </p:commandLink>    
+                                </p:commandButton> 
                             </p:column>
+
+                            
 
                             <f:facet name="footer">
                                 <h:outputText value="Existem " />

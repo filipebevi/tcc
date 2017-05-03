@@ -48,26 +48,22 @@
 
                             <p:column style="text-align: center">
                                 <f:facet name="header">
-                                    <h:outputText value="Editar"/>
+                                    <h:outputText value="Editar/Excluir"/>
                                 </f:facet>
-                                <p:commandLink action="#{cidadeBean.editar}">
-                                    <p:graphicImage library="imagens" name="editar.png" style="border: 0"/>
+                                <p:commandButton icon="ui-icon-pencil" action="#{cidadeBean.editar}">
+                                    
                                     <f:setPropertyActionListener target="#{cidadeBean.cidade}" value="#{item}"/>
-                                </p:commandLink>    
+                                </p:commandButton>
+                                <p:commandButton  icon="ui-icon-trash" action="#{cidadeBean.excluir()}" update=":opa:formulario2:tabela2" onclick="if (!confirm('Confirma a exclusao da cidade #{item.nome}?'))
+                                    return false;"  >
+                                    
+                                    <f:setPropertyActionListener target="#{cidadeBean.cidade}" value="#{item}"/>
+                                    
+                                    
+                                </p:commandButton> 
                             </p:column>
 
-                            <p:column style="text-align: center">
-                                <f:facet name="header">
-                                    <h:outputText value="Excluir"/>
-                                </f:facet>
-                                <p:commandLink   action="#{cidadeBean.excluir()}" update=":opa:formulario2:tabela2" onclick="if (!confirm('Confirma a exclusao da cidade #{item.nome}?'))
-                                    return false;"  >
-                                    <p:graphicImage library="imagens" name="excluir.png" style="border: 0"/>
-                                    <f:setPropertyActionListener target="#{cidadeBean.cidade}" value="#{item}"/>
-                                    
-                                    
-                                </p:commandLink>    
-                            </p:column>
+                            
 
                             <f:facet name="footer">
                                 <h:outputText value="Existem " />

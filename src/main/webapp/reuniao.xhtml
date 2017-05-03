@@ -47,39 +47,35 @@
 
                             <p:column style="text-align: center">
                                 <f:facet name="header">
-                                    <h:outputText value="Editar"/>
+                                    <h:outputText value="Consultar/Excluir"/>
                                 </f:facet>
-                               
 
-                                <p:commandLink  action="#{reuniaoConsultaBean.consultar()}" >
-                                    <p:graphicImage library="imagens" name="editar.png" style="border: 0"/>
-                                    <f:setPropertyActionListener target="#{reuniaoConsultaBean.reuniao}" value="#{item}"/>
+
+                                <p:commandButton  icon="ui-icon-search" action="#{reuniaoConsultaBean.consultar()}">
                                     
-                                </p:commandLink>    
-                            </p:column>
+                                    <f:setPropertyActionListener target="#{reuniaoConsultaBean.reuniao}" value="#{item}"/>
 
-                            <p:column style="text-align: center">
-                                <f:facet name="header">
-                                    <h:outputText value="Excluir"/>
-                                </f:facet>
-                                <p:commandLink  update=":form1:form2:tabela" action="#{reuniaoConsultaBean.excluir()}" onclick="if (!confirm('Confirma a exclusao da Reuniao?'))
-                                            return false;"  >
-                                    <p:graphicImage library="imagens" name="excluir.png" style="border: 0"/>
+                                </p:commandButton>
+                                
+                                <p:commandButton icon="ui-icon-trash" update=":form1:form2:tabela" action="#{reuniaoConsultaBean.excluir()}" onclick="if (!confirm('Confirma a exclusao da Reuniao?'))
+                                    return false;">
+
                                     <f:setPropertyActionListener target="#{reuniaoConsultaBean.reuniao}" value="#{item}"/>
 
 
-                                </p:commandLink>    
+                                </p:commandButton> 
                             </p:column>
 
+                            
                             <f:facet name="footer">
                                 <h:outputText value="Existem " />
-                                <h:outputText value="#{fn:length(reuniaoConsultarBean.lista)}" />
+                                <h:outputText value="#{fn:length(reuniaoConsultaBean.lista)}" />
                                 <h:outputText value=" Reunioes cadastradas. " />
                             </f:facet>
                         </p:dataTable>
 
 
-                        
+
 
                     </h:form>
 

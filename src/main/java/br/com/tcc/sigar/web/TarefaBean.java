@@ -5,7 +5,6 @@
  */
 package br.com.tcc.sigar.web;
 
-
 import br.com.tcc.sigar.acompanhamento.Acompanhamento;
 import br.com.tcc.sigar.tarefa.TarefaRN;
 import br.com.tcc.sigar.tarefa.Tarefa;
@@ -25,70 +24,63 @@ import org.omnifaces.util.Messages;
  */
 @ManagedBean
 @SessionScoped
-public class TarefaBean implements Serializable{
-    
+public class TarefaBean implements Serializable {
+
     private Tarefa tarefa = new Tarefa();
     private List<Tarefa> lista;
     private Acompanhamento acompanhamento = new Acompanhamento();
-    
-    
 
-    
-    
-    public String novo(){
-        
-        this.tarefa=new Tarefa();
-        
-        
-        
-        
+    public String novo() {
+
+        this.tarefa = new Tarefa();
+
         return "cadastrartarefa";
     }
-    
-    public String salvar(){
+
+    public String salvar() {
         TarefaRN tarefaRN = new TarefaRN();
-        
-        
+
         tarefaRN.salvar(this.tarefa);
         Messages.addGlobalInfo("Tarefa cadastrada com sucesso");
-        this.lista=null;
+        this.lista = null;
         //System.out.println(this.tarefa.getNome());
         return "tarefa";
-        
-        
+
     }
 
     public List<Tarefa> getLista() {
-     
-            TarefaRN tarefaRN = new TarefaRN();
-            this.lista=tarefaRN.listar();
-       
-        
+
+        TarefaRN tarefaRN = new TarefaRN();
+        this.lista = tarefaRN.listar();
+
         return this.lista;
     }
-    
-    
-    
-    public String editar(){
-        this.acompanhamento=new Acompanhamento();
+
+    public String editar() {
+        this.acompanhamento = new Acompanhamento();
         return "editartarefa";
     }
-    
-    public void adicionar(){
+
+    public void adicionar() {
         if (this.tarefa.getIdAcompanhamento() == null) {
             this.tarefa.setIdAcompanhamento(new ArrayList());
         }
-
-        this.tarefa.getIdAcompanhamento().add(acompanhamento);
-        acompanhamento=new Acompanhamento();
+        
+        if (acompanhamento.getDescricao().trim().equals("")) {
+            Messages.addGlobalInfo("Campo descrição em branco, preencha com a descrição do seu acompanhamento");
+        } else {
+            this.tarefa.getIdAcompanhamento().add(acompanhamento);
+            acompanhamento = new Acompanhamento();
+        }
+        
     }
-    
-   public String excluir(){
-       TarefaRN tarefaRN=new TarefaRN();
-       tarefaRN.excluir(this.tarefa);
-       this.lista=null;
-       return null;
-   }
+
+    public String excluir() {
+        TarefaRN tarefaRN = new TarefaRN();
+        tarefaRN.excluir(this.tarefa);
+        this.lista = null;
+        return null;
+    }
 
     public Tarefa getTarefa() {
         return tarefa;
@@ -105,7 +97,5 @@ public class TarefaBean implements Serializable{
     public void setAcompanhamento(Acompanhamento acompanhamento) {
         this.acompanhamento = acompanhamento;
     }
-    
-    
-    
+
 }

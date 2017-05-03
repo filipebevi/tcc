@@ -69,27 +69,22 @@
 
                             <p:column style="text-align: center">
                                 <f:facet name="header">
-                                    <h:outputText value="Editar"/>
+                                    <h:outputText value="Editar/Excluir"/>
                                 </f:facet>
-                                <p:commandLink action="#{convidadoBean.editar()}">
-                                    <p:graphicImage library="imagens" name="editar.png" style="border: 0"/>
+                                <p:commandButton icon="ui-icon-pencil" action="#{convidadoBean.editar()}">
+                                    
                                     <f:setPropertyActionListener target="#{convidadoBean.convidado}" value="#{item}"/>
-                                </p:commandLink>    
-                            </p:column>
-
-                            <p:column style="text-align: center">
-                                <f:facet name="header">
-                                    <h:outputText value="Excluir"/>
-                                </f:facet>
-                                <p:commandLink   action="#{convidadoBean.excluir()}" update=":form1:form2:tb1" onclick="if (!confirm('Confirma a exclusao do Convidado #{item.nome}?'))
-                                            return false;"  >
-                                    <p:graphicImage library="imagens" name="excluir.png" style="border: 0"/>
+                                </p:commandButton>
+                                <p:commandButton  icon="ui-icon-trash" action="#{convidadoBean.excluir()}" update=":form1:form2:tb1" onclick="if (!confirm('Confirma a exclusao do Convidado #{item.nome}?'))
+                                    return false;"  >
+                                    
                                     <f:setPropertyActionListener target="#{convidadoBean.convidado}" value="#{item}"/>
 
 
-                                </p:commandLink>    
+                                </p:commandButton> 
                             </p:column>
 
+                            
                             <f:facet name="footer">
                                 <h:outputText value="Existem " />
                                 <h:outputText value="#{fn:length(convidadoBean.lista)}" />

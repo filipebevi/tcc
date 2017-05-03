@@ -53,6 +53,7 @@ public class EmpresaBean {
        if(this.lista==null){
             EmpresaRN empresaRN = new EmpresaRN();
             this.lista=empresaRN.listar();
+            
        }
         
         return this.lista;
