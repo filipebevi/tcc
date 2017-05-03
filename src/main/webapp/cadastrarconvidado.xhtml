@@ -19,7 +19,7 @@
                         <p:inputText id="nome" value="#{convidadoBean.convidado.nome}" title="Nome" required="true"/>
 
                         <p:outputLabel value="cpf:" for="cpf" />
-                        <p:inputText id="cpf" value="#{convidadoBean.convidado.cpf}" title="cpf" required="true"/>
+                        <p:inputMask id="cpf" value="#{convidadoBean.convidado.cpf}" title="cpf" mask="999.999.999-99" required="true"/>
 
                         <p:outputLabel value="email:" for="email" />
                         <p:inputText id="email" value="#{convidadoBean.convidado.email}" title="email" required="true">
@@ -48,7 +48,7 @@
 
 
                         <p:outputLabel value="Telefone:" for="telefone" />
-                        <p:inputText id="telefone" value="#{convidadoBean.convidado.telefone}" title="telefone" required="true"/>
+                        <p:inputMask id="telefone" value="#{convidadoBean.convidado.telefone}" title="telefone" mask="(99) 99999.9999" required="true"/>
 
 
 
