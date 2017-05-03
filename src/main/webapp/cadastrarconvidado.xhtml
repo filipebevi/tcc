@@ -10,43 +10,47 @@
     <ui:composition template="menuPrincipal.xhtml">
         <ui:define name="conteudo">
             <f:view>
-                <h:form>
+                <h:form id="form">
                     <h:inputHidden value="#{convidadoBean.convidado.idParticipante}"/>
                     <h1><h:outputText value="Cadastro de Convidado"/></h1>
-                    <p:panelGrid columns="2">
+                    <p:panelGrid columns="2" id="painel" styleClass="semBorda">
 
                         <p:outputLabel value="Nome:" for="nome" />
-                        <p:inputText id="nome" value="#{convidadoBean.convidado.nome}" title="Nome" />
-                        
+                        <p:inputText id="nome" value="#{convidadoBean.convidado.nome}" title="Nome" required="true"/>
+
                         <p:outputLabel value="cpf:" for="cpf" />
-                        <p:inputText id="cpf" value="#{convidadoBean.convidado.cpf}" title="cpf" />
-                        
+                        <p:inputText id="cpf" value="#{convidadoBean.convidado.cpf}" title="cpf" required="true"/>
+
                         <p:outputLabel value="email:" for="email" />
-                        <p:inputText id="email" value="#{convidadoBean.convidado.email}" title="email" />
-                        
+                        <p:inputText id="email" value="#{convidadoBean.convidado.email}" title="email" required="true">
+                            <f:validateRegex
+                                pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"  />
+                        </p:inputText>
+                       
+
                         <p:outputLabel value="Data de Nascimento:" for="nascimento" />
-                        <p:calendar id="nascimento" value="#{funcionarioBean.funcionario.dataDeNascimento.time}" pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
-                        
+                        <p:calendar id="nascimento" value="#{funcionarioBean.funcionario.dataDeNascimento.time}" pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" required="true"/>
+
                         <p:outputLabel value="Endereço:" for="endereco" />
-                        <p:inputText id="endereco" value="#{convidadoBean.convidado.endereço}" title="endereco" />
-                        
+                        <p:inputText id="endereco" value="#{convidadoBean.convidado.endereço}" title="endereco" required="true" />
+
                         <p:outputLabel value="Cidade:" for="cidade" />
-                        <p:selectOneMenu  id="cidade"   value="#{convidadoBean.convidado.idCidade}" converter="omnifaces.SelectItemsConverter">
+                        <p:selectOneMenu  id="cidade"   value="#{convidadoBean.convidado.idCidade}" converter="omnifaces.SelectItemsConverter" required="true">
                             <f:selectItem itemValue="#{null}" itemLabel="Escolha um Item" noSelectionOption="true" />
                             <f:selectItems  value="#{cidadeBean.lista}" var="item" itemValue="#{item}" itemLabel="#{item.nome}-#{item.uf}"/>
                         </p:selectOneMenu>
 
                         <p:outputLabel value="Empresa:" for="empresa" />
-                        <p:selectOneMenu  id="empresa"   value="#{convidadoBean.convidado.idEmpresa}" converter="omnifaces.SelectItemsConverter">
+                        <p:selectOneMenu  id="empresa"   value="#{convidadoBean.convidado.idEmpresa}" converter="omnifaces.SelectItemsConverter" required="true">
                             <f:selectItem itemValue="#{null}" itemLabel="Escolha um Item" noSelectionOption="true" />
                             <f:selectItems  value="#{empresaBean.lista}" var="item" itemValue="#{item}" itemLabel="#{item.nome}"/>
                         </p:selectOneMenu>
-                        
-                        
+
+
                         <p:outputLabel value="Telefone:" for="telefone" />
-                        <p:inputText id="telefone" value="#{convidadoBean.convidado.telefone}" title="telefone" />
-                        
-                        
+                        <p:inputText id="telefone" value="#{convidadoBean.convidado.telefone}" title="telefone" required="true"/>
+
+
 
                     </p:panelGrid>
 
@@ -54,7 +58,7 @@
 
 
                     <h:form>
-                        <p:commandButton action="#{convidadoBean.salvar()}" value="Salvar" style="font-size: small" />
+                        <p:commandButton action="#{convidadoBean.salvar()}" value="Salvar" style="font-size: small" update=":mensagem, :form:painel" />
                         <p:commandButton action="convidado" value="Voltar" style="font-size: small"/>
                     </h:form>
                 </h:form>

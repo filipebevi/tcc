@@ -18,14 +18,14 @@
                     <p:panelGrid columns="2" styleClass="semBorda" >
 
                         <p:outputLabel value="Nome:" for="nome" />
-                        <p:inputText id="nome" value="#{departamentoBean.departamento.nome}" title="Nome" />
+                        <p:inputText id="nome" value="#{departamentoBean.departamento.nome}" title="Nome" required="true" />
 
 
 
 
                     </p:panelGrid>
                     <h:form>
-                        <p:commandButton action="#{departamentoBean.salvar()}" value="Salvar" style="font-size: small"/>
+                        <p:commandButton action="#{departamentoBean.salvar()}" value="Salvar" style="font-size: small" update=":mensagem"/>
                         <p:commandButton action="departamento" value="Voltar" style="font-size: small"/>
 
                     </h:form>

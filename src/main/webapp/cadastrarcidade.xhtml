@@ -18,9 +18,9 @@
                     <p:panelGrid columns="2" styleClass="semBorda" >
 
                         <p:outputLabel value="Nome:" for="nome" />
-                        <p:inputText id="nome" value="#{cidadeBean.cidade.nome}" title="Nome" />
+                        <p:inputText id="nome" value="#{cidadeBean.cidade.nome}" title="Nome" required="true" />
                         <p:outputLabel value="Uf:" for="uf" />
-                        <p:selectOneMenu id="uf" value="#{cidadeBean.cidade.uf}">
+                        <p:selectOneMenu id="uf" value="#{cidadeBean.cidade.uf}" required="true">
                             <f:selectItem itemValue="AC" itemLabel="AC"/>
                             <f:selectItem itemValue="AL" itemLabel="AL"/>
                             <f:selectItem itemValue="AM" itemLabel="AM"/>
@@ -71,8 +71,8 @@
                         <p:outputLabel value="Comentario:" for="comentario" />
                         <p:inputText id="comentario" value="#{cidadeBean.cidade.comentario}" title="Comentario" />
 
-                        <p:outputLabel value="Governador:" for="governador" />
-                        <p:inputText id="governador" value="#{cidadeBean.cidade.governador}" title="Governador" />
+                        <p:outputLabel value="Prefeito:" for="prefeito" />
+                        <p:inputText id="prefeito" value="#{cidadeBean.cidade.governador}" title="prefeito" />
                         
                        
                     

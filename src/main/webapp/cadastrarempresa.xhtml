@@ -13,25 +13,26 @@
                 <h:form>
                     <h:inputHidden value="#{empresaBean.empresa.idEmpresa}"/>
                     <h1><h:outputText value="Cadastro de Empresa"/></h1>
-                    <p:panelGrid columns="2">
+                    <p:panelGrid columns="2" styleClass="semBorda">
+                        
 
                         <p:outputLabel value="Nome:" for="nome" />
-                        <p:inputText id="nome" value="#{empresaBean.empresa.nome}" title="Nome" />
-                        
+                        <p:inputText id="nome" value="#{empresaBean.empresa.nome}" title="Nome" required="true" />
+
                         <p:outputLabel value="Cnpj:" for="cnpj" />
-                        <p:inputText id="cnpj" value="#{empresaBean.empresa.cnpj}" title="Cnpj" />
-                        
+                        <p:inputText id="cnpj" value="#{empresaBean.empresa.cnpj}" title="Cnpj" required="true" />
+
                         <p:outputLabel value="Endereco:" for="endereco" />
                         <p:inputText id="endereco" value="#{empresaBean.empresa.endereco}" title="Endereco" />
-                        
+
                         <p:outputLabel value="Telefone:" for="telefone" />
                         <p:inputText id="telefone" value="#{empresaBean.empresa.telefone}" title="Telefone" />
-                        
+
                         <p:outputLabel value="Email:" for="email" />
                         <p:inputText id="email" value="#{empresaBean.empresa.email}" title="Email" />
-                        
+
                         <h:outputLabel value="Cidade:" for="cidade" />
-                        <p:selectOneMenu  id="cidade"   value="#{empresaBean.empresa.idCidade}" converter="omnifaces.SelectItemsConverter">
+                        <p:selectOneMenu  id="cidade"   value="#{empresaBean.empresa.idCidade}" converter="omnifaces.SelectItemsConverter" required="true">
                             <f:selectItems  value="#{cidadeBean.lista}" var="item" itemValue="#{item}" itemLabel="#{item.nome}-#{item.uf}"/>
                         </p:selectOneMenu>
 
@@ -39,10 +40,10 @@
 
                         <p:outputLabel value="DtFundacao:" for="dtFundacao" />
                         <p:calendar id="dtFundacao" value="#{empresaBean.empresa.dtFundacao.time}" pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
-                        
+
                         <p:outputLabel value="QtdFunc:" for="qtdFunc" />
                         <p:inputText id="qtdFunc" value="#{empresaBean.empresa.qtdFunc}" title="QtdFunc" />
-                        
+
                         <p:outputLabel value="Faturamento:" for="faturamento" />
                         <p:inputText id="faturamento" value="#{empresaBean.empresa.faturamento}" title="Faturamento" />
                     </p:panelGrid>
@@ -51,7 +52,7 @@
 
 
                     <h:form>
-                        <p:commandButton action="#{empresaBean.salvar()}" value="Salvar" style="font-size: small" />
+                        <p:commandButton action="#{empresaBean.salvar()}" value="Salvar" style="font-size: small" update=":mensagem"  />
                         <p:commandButton action="empresa" value="Voltar" style="font-size: small"/>
                     </h:form>
                 </h:form>

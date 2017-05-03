@@ -65,14 +65,15 @@ public class TarefaBean implements Serializable {
         if (this.tarefa.getIdAcompanhamento() == null) {
             this.tarefa.setIdAcompanhamento(new ArrayList());
         }
-        
-        if (acompanhamento.getDescricao().trim().equals("")) {
-            Messages.addGlobalInfo("Campo descrição em branco, preencha com a descrição do seu acompanhamento");
-        } else {
+
+        if (!acompanhamento.getDescricao().trim().equals("")) {
             this.tarefa.getIdAcompanhamento().add(acompanhamento);
             acompanhamento = new Acompanhamento();
+        } else {
+            Messages.addGlobalError("Campo descrição em branco, preencha com a descrição do seu acompanhamento");
+
         }
-        
+
     }
 
     public String excluir() {

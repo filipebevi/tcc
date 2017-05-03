@@ -13,19 +13,19 @@
                 <h:form>
                     <h:inputHidden value="#{funcionarioBean.funcionario.idParticipante}"/>
                     <h1><h:outputText value="Cadastro de Funcionário"/></h1>
-                    <p:panelGrid columns="2">
+                    <p:panelGrid columns="2" styleClass="semBorda">
 
                         <p:outputLabel value="Nome:" for="nome" />
-                        <p:inputText id="nome" value="#{funcionarioBean.funcionario.nome}" title="Nome" />
+                        <p:inputText id="nome" value="#{funcionarioBean.funcionario.nome}" title="Nome" required="true"/>
 
                         <p:outputLabel value="Matricula:" for="matricula" />
-                        <p:inputText id="matricula" value="#{funcionarioBean.funcionario.matricula}" title="matricula" />
+                        <p:inputText id="matricula" value="#{funcionarioBean.funcionario.matricula}" title="matricula" required="true" />
 
                         <p:outputLabel value="email:" for="email" />
-                        <p:inputText id="email" value="#{funcionarioBean.funcionario.email}" title="email" />
+                        <p:inputText id="email" value="#{funcionarioBean.funcionario.email}" title="email" required="true" />
 
                         <p:outputLabel value="Data de Nascimento:" for="nascimento" />
-                        <p:calendar id="nascimento"  value="#{funcionarioBean.funcionario.dataDeNascimento.time}" pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+                        <p:calendar id="nascimento"  value="#{funcionarioBean.funcionario.dataDeNascimento.time}" pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" required="true"/>
                             
                        
 
@@ -33,20 +33,20 @@
                         <p:inputText id="endereco" value="#{funcionarioBean.funcionario.endereço}" title="endereco" />
 
                         <p:outputLabel value="Cidade:" for="cidade" />
-                        <p:selectOneMenu  id="cidade"   value="#{funcionarioBean.funcionario.idCidade}" converter="omnifaces.SelectItemsConverter">
+                        <p:selectOneMenu  id="cidade"   value="#{funcionarioBean.funcionario.idCidade}" converter="omnifaces.SelectItemsConverter" >
                             <f:selectItem itemValue="#{null}" itemLabel="Escolha um Item" noSelectionOption="true" />
                             <f:selectItems  value="#{cidadeBean.lista}" var="item" itemValue="#{item}" itemLabel="#{item.nome}-#{item.uf}"/>
                         </p:selectOneMenu>
 
                         <p:outputLabel value="Departamento:" for="departamento" />
-                        <p:selectOneMenu  id="departamento"   value="#{funcionarioBean.funcionario.idDepartamento}" converter="omnifaces.SelectItemsConverter">
+                        <p:selectOneMenu  id="departamento"   value="#{funcionarioBean.funcionario.idDepartamento}" converter="omnifaces.SelectItemsConverter" required="true">
                             <f:selectItem itemValue="#{null}" itemLabel="Escolha um Item" noSelectionOption="true" />
                             <f:selectItems  value="#{departamentoBean.lista}" var="item" itemValue="#{item}" itemLabel="#{item.nome}"/>
                         </p:selectOneMenu>
 
 
                         <p:outputLabel value="Telefone:" for="telefone" />
-                        <p:inputText id="telefone" value="#{funcionarioBean.funcionario.telefone}" title="telefone" />
+                        <p:inputText id="telefone" value="#{funcionarioBean.funcionario.telefone}" title="telefone" required="true"/>
 
 
 
@@ -56,7 +56,7 @@
 
 
                     <h:form>
-                        <p:commandButton action="#{funcionarioBean.salvar()}" value="Salvar" style="font-size: small" />
+                        <p:commandButton action="#{funcionarioBean.salvar()}" value="Salvar" style="font-size: small" update=":mensagem" />
                         <p:commandButton action="funcionario" value="Voltar" style="font-size: small"/>
                     </h:form>
                 </h:form>

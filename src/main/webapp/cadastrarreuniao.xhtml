@@ -12,19 +12,19 @@
                 <h:form id="formulario">
                     <h:inputHidden value="#{reuniaoBean.reuniao.idReuniao}"/>
                     <h1>Cadastro de Reunião</h1>
-                    <p:panelGrid columns="2">
+                    <p:panelGrid columns="2" styleClass="semBorda">
 
                         <p:outputLabel value="Data:" for="dt" />
                         <p:calendar id="dt" value="#{reuniaoBean.reuniao.dt.time}" pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" disabled="true"/>
 
                         <p:outputLabel value="Assunto:" for="assunto" />
-                        <p:inputText id="assunto" size="50" value="#{reuniaoBean.reuniao.assunto}" title="assunto" />
+                        <p:inputText id="assunto" size="50" value="#{reuniaoBean.reuniao.assunto}" title="assunto" required="true"/>
 
                         <p:outputLabel value="Observação" for="observacao" />
-                        <p:inputTextarea id="observacao" rows="5" cols="50" value="#{reuniaoBean.reuniao.observacao}" queryDelay="750" minQueryLength="4" />
+                        <p:inputTextarea id="observacao" rows="5" cols="50" value="#{reuniaoBean.reuniao.observacao}" queryDelay="750" minQueryLength="4" required="true" />
 
                         <h:outputLabel for="participantes" value="Participantes:" />
-                        <p:selectCheckboxMenu id="participantes"  value="#{reuniaoBean.reuniao.idParticipantes}"  label="Participantes"
+                        <p:selectCheckboxMenu id="participantes"  value="#{reuniaoBean.reuniao.idParticipantes}"  label="Participantes" required="true"
                                               filter="true" filterMatchMode="startsWith" panelStyle="width:250px" converter="omnifaces.SelectItemsConverter" multiple="true">
                             <f:selectItems value="#{reuniaoBean.participantes}" var="item" itemValue="#{item}" itemLabel="#{item.nome}" />
                         </p:selectCheckboxMenu>
@@ -33,7 +33,7 @@
 
                     <h3>Tópicos</h3>
 
-                    <p:panelGrid id="topico" columns="2">
+                    <p:panelGrid id="topico" columns="2" styleClass="semBorda">
                         <p:outputLabel for="assuntolista" value="Assunto:"/>
                         <p:inputText id="assuntolista" size="50" value="#{reuniaoBean.topico.assunto}" title="assunto" />
                         <p:outputLabel for="descricaolista" value="Descriação:"/>
@@ -95,7 +95,7 @@
 
                     <h3>Tarefas</h3>
 
-                    <p:panelGrid id="tarefa" columns="2" >
+                    <p:panelGrid id="tarefa" columns="2"styleClass="semBorda">
                         <p:outputLabel for="descricaotarefa" value="Descrição:"/>
                         <p:inputText id="descricaotarefa" size="50" value="#{reuniaoBean.tarefa.descricao}" title="Descricao" />
 
@@ -162,7 +162,7 @@
                     <h:form>
                         <br/>
                         <br/>
-                        <p:commandButton action="#{reuniaoBean.salvar()}" value="Salvar" style="font-size: small" />
+                        <p:commandButton action="#{reuniaoBean.salvar()}" value="Salvar" style="font-size: small" update=":mensagem" />
                         <p:commandButton action="reuniao" value="Voltar" style="font-size: small"/>
                     </h:form>
                 </h:form>
