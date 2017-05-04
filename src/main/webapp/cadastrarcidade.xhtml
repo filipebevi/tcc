@@ -10,12 +10,12 @@
     <ui:composition template="menuPrincipal.xhtml">
         <ui:define name="conteudo">
             <f:view>
-                <h:form>
+                <h:form id="form">
                     <h:inputHidden value="#{cidadeBean.cidade.idCidade}"/>
 
                     <h1><h:outputText value="Cadastro de Cidades"/></h1>
 
-                    <p:panelGrid columns="2" styleClass="semBorda" >
+                    <p:panelGrid columns="2" styleClass="semBorda" id="painel" >
 
                         <p:outputLabel value="Nome:" for="nome" />
                         <p:inputText id="nome" value="#{cidadeBean.cidade.nome}" title="Nome" required="true" />
@@ -79,7 +79,7 @@
 
                     </p:panelGrid>
                     <h:form>
-                        <p:commandButton action="#{cidadeBean.salvar()}" value="Salvar" style="font-size: small"/>
+                        <p:commandButton action="#{cidadeBean.salvar()}" value="Salvar" style="font-size: small" update=":mensagem, :form:painel"/>
                         <p:commandButton action="cidade" value="Voltar" style="font-size: small"/>
                         
                     </h:form>

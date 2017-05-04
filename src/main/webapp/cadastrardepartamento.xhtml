@@ -10,7 +10,7 @@
     <ui:composition template="menuPrincipal.xhtml">
         <ui:define name="conteudo">
             <f:view>
-                <h:form>
+                <h:form id="form">
                     <h:inputHidden value="#{departamentoBean.departamento.idDepartamento}"/>
 
                     <h1><h:outputText value="Cadastro de Departamento"/></h1>
@@ -25,7 +25,7 @@
 
                     </p:panelGrid>
                     <h:form>
-                        <p:commandButton action="#{departamentoBean.salvar()}" value="Salvar" style="font-size: small" update=":mensagem"/>
+                        <p:commandButton action="#{departamentoBean.salvar()}" value="Salvar" style="font-size: small" update=":mensagem, :form"/>
                         <p:commandButton action="departamento" value="Voltar" style="font-size: small"/>
 
                     </h:form>

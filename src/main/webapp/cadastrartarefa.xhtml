@@ -10,7 +10,7 @@
     <ui:composition template="menuPrincipal.xhtml">
         <ui:define name="conteudo">
             <f:view>
-                <h:form>
+                <h:form id="form">
                     <h:inputHidden value="#{tarefaBean.tarefa.idTarefa}"/>
                     <h1><h:outputText value="Cadastro de Tarefas"/></h1>
                     <p:panelGrid columns="2" styleClass="semBorda">
@@ -32,7 +32,7 @@
                     </p:panelGrid>
 
                     <h:form>
-                        <p:commandButton action="#{tarefaBean.salvar()}" value="Salvar" style="font-size: small" update=":mensagem" />
+                        <p:commandButton action="#{tarefaBean.salvar()}" value="Salvar" style="font-size: small" update=":mensagem, :form" />
                         <p:commandButton action="tarefa" value="Voltar" style="font-size: small"/>
                     </h:form>
                 </h:form>

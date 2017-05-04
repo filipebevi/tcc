@@ -12,7 +12,7 @@
                 <h:form id="formulario">
                     <h:inputHidden value="#{reuniaoBean.reuniao.idReuniao}"/>
                     <h1>Cadastro de Reunião</h1>
-                    <p:panelGrid columns="2" styleClass="semBorda">
+                    <p:panelGrid columns="2" styleClass="semBorda" id="cabecalho">
 
                         <p:outputLabel value="Data:" for="dt" />
                         <p:calendar id="dt" value="#{reuniaoBean.reuniao.dt.time}" pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" disabled="true"/>
@@ -33,7 +33,7 @@
 
                     <h3>Tópicos</h3>
 
-                    <p:panelGrid id="topico" columns="2" styleClass="semBorda">
+                    <p:panelGrid id="topico" columns="2">
                         <p:outputLabel for="assuntolista" value="Assunto:"/>
                         <p:inputText id="assuntolista" size="50" value="#{reuniaoBean.topico.assunto}" title="assunto" />
                         <p:outputLabel for="descricaolista" value="Descriação:"/>
@@ -95,7 +95,7 @@
 
                     <h3>Tarefas</h3>
 
-                    <p:panelGrid id="tarefa" columns="2"styleClass="semBorda">
+                    <p:panelGrid id="tarefa" columns="2" >
                         <p:outputLabel for="descricaotarefa" value="Descrição:"/>
                         <p:inputText id="descricaotarefa" size="50" value="#{reuniaoBean.tarefa.descricao}" title="Descricao" />
 
@@ -162,7 +162,7 @@
                     <h:form>
                         <br/>
                         <br/>
-                        <p:commandButton action="#{reuniaoBean.salvar()}" value="Salvar" style="font-size: small" update=":mensagem" />
+                        <p:commandButton action="#{reuniaoBean.salvar()}" value="Salvar" style="font-size: small" update=":mensagem, :formulario:cabecalho" />
                         <p:commandButton action="reuniao" value="Voltar" style="font-size: small"/>
                     </h:form>
                 </h:form>

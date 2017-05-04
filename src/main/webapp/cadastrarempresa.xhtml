@@ -10,26 +10,29 @@
     <ui:composition template="menuPrincipal.xhtml">
         <ui:define name="conteudo">
             <f:view>
-                <h:form>
+                <h:form id="form">
                     <h:inputHidden value="#{empresaBean.empresa.idEmpresa}"/>
                     <h1><h:outputText value="Cadastro de Empresa"/></h1>
                     <p:panelGrid columns="2" styleClass="semBorda">
-                        
+
 
                         <p:outputLabel value="Nome:" for="nome" />
                         <p:inputText id="nome" value="#{empresaBean.empresa.nome}" title="Nome" required="true" />
 
                         <p:outputLabel value="Cnpj:" for="cnpj" />
-                        <p:inputText id="cnpj" value="#{empresaBean.empresa.cnpj}" title="Cnpj" required="true" />
+                        <p:inputMask id="cnpj" value="#{empresaBean.empresa.cnpj}" title="Cnpj" mask="99.999.999/9999-99" required="true" />
 
                         <p:outputLabel value="Endereco:" for="endereco" />
                         <p:inputText id="endereco" value="#{empresaBean.empresa.endereco}" title="Endereco" />
 
                         <p:outputLabel value="Telefone:" for="telefone" />
-                        <p:inputText id="telefone" value="#{empresaBean.empresa.telefone}" title="Telefone" />
+                        <p:inputMask id="telefone" value="#{empresaBean.empresa.telefone}" mask="(99) 99999.9999" title="Telefone" />
 
                         <p:outputLabel value="Email:" for="email" />
-                        <p:inputText id="email" value="#{empresaBean.empresa.email}" title="Email" />
+                        <p:inputText id="email" value="#{empresaBean.empresa.email}" title="Email" >
+                            <f:validateRegex
+                                pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"  />
+                        </p:inputText>
 
                         <h:outputLabel value="Cidade:" for="cidade" />
                         <p:selectOneMenu  id="cidade"   value="#{empresaBean.empresa.idCidade}" converter="omnifaces.SelectItemsConverter" required="true">
@@ -52,7 +55,7 @@
 
 
                     <h:form>
-                        <p:commandButton action="#{empresaBean.salvar()}" value="Salvar" style="font-size: small" update=":mensagem"  />
+                        <p:commandButton action="#{empresaBean.salvar()}" value="Salvar" style="font-size: small" update=":mensagem, :form"  />
                         <p:commandButton action="empresa" value="Voltar" style="font-size: small"/>
                     </h:form>
                 </h:form>

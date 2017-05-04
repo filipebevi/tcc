@@ -10,7 +10,7 @@
     <ui:composition template="menuPrincipal.xhtml">
         <ui:define name="conteudo">
             <f:view>
-                <h:form>
+                <h:form id="formulario">
                     <h:inputHidden value="#{funcionarioBean.funcionario.idParticipante}"/>
                     <h1><h:outputText value="Cadastro de Funcionário"/></h1>
                     <p:panelGrid columns="2" styleClass="semBorda">
@@ -22,12 +22,15 @@
                         <p:inputText id="matricula" value="#{funcionarioBean.funcionario.matricula}" title="matricula" required="true" />
 
                         <p:outputLabel value="email:" for="email" />
-                        <p:inputText id="email" value="#{funcionarioBean.funcionario.email}" title="email" required="true" />
+                        <p:inputText id="email" value="#{funcionarioBean.funcionario.email}" title="email" required="true" >
+                            <f:validateRegex
+                                pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"  />
+                        </p:inputText>
 
                         <p:outputLabel value="Data de Nascimento:" for="nascimento" />
                         <p:calendar id="nascimento"  value="#{funcionarioBean.funcionario.dataDeNascimento.time}" pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" required="true"/>
-                            
-                       
+
+
 
                         <p:outputLabel value="Endereço:" for="endereco" />
                         <p:inputText id="endereco" value="#{funcionarioBean.funcionario.endereço}" title="endereco" />
@@ -46,7 +49,7 @@
 
 
                         <p:outputLabel value="Telefone:" for="telefone" />
-                        <p:inputText id="telefone" value="#{funcionarioBean.funcionario.telefone}" title="telefone" required="true"/>
+                        <p:inputMask id="telefone" value="#{funcionarioBean.funcionario.telefone}" title="telefone" mask="(99) 99999.9999" required="true"/>
 
 
 
@@ -56,7 +59,7 @@
 
 
                     <h:form>
-                        <p:commandButton action="#{funcionarioBean.salvar()}" value="Salvar" style="font-size: small" update=":mensagem" />
+                        <p:commandButton action="#{funcionarioBean.salvar()}" value="Salvar" style="font-size: small" update=":mensagem, :formulario" />
                         <p:commandButton action="funcionario" value="Voltar" style="font-size: small"/>
                     </h:form>
                 </h:form>
