@@ -11,6 +11,7 @@ import br.com.tcc.sigar.tarefa.Tarefa;
 import br.com.tcc.sigar.topico.Topico;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -80,6 +81,14 @@ public class TarefaBean implements Serializable {
         TarefaRN tarefaRN = new TarefaRN();
         tarefaRN.excluir(this.tarefa);
         this.lista = null;
+        return null;
+    }
+    
+    public String baixarTarefa(){
+        TarefaRN tarefaRN = new TarefaRN();
+        this.tarefa.setConclusao(Calendar.getInstance());
+        tarefaRN.salvar(this.tarefa);
+        Messages.addGlobalInfo("Tarefa cadastrada com sucesso");
         return null;
     }
 

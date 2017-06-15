@@ -65,7 +65,7 @@
 
                             <p:column style="text-align: center">
                                 <f:facet name="header">
-                                    <h:outputText value="Editar/Excluir"/>
+                                    <h:outputText value="Editar/Excluir/Baixar"/>
                                 </f:facet>
                                 
                                 <p:commandButton icon="ui-icon-pencil" action="#{tarefaBean.editar()}">
@@ -78,7 +78,14 @@
                                     
                                     <f:setPropertyActionListener target="#{tarefaBean.tarefa}" value="#{tarefa}"/>
 
-                                </p:commandButton> 
+                                </p:commandButton>
+                                
+                                <p:commandButton  icon="ui-icon-check" action="#{tarefaBean.baixarTarefa()}" onclick="if (!confirm('Deseja baixar esta tarefa?'))
+                                    return false;" update=":id1:id2:id3"  >
+                                    
+                                    <f:setPropertyActionListener target="#{tarefaBean.tarefa}" value="#{tarefa}"/>
+
+                                </p:commandButton>
                             </p:column>
 
                             
