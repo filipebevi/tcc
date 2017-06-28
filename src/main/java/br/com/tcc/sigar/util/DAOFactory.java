@@ -11,6 +11,7 @@ import br.com.tcc.sigar.cidade.CidadeDAO;
 import br.com.tcc.sigar.cidade.CidadeDAOHibernate;
 import br.com.tcc.sigar.departamento.DepartamentoDAO;
 import br.com.tcc.sigar.departamento.DepartamentoDAOHibernate;
+import br.com.tcc.sigar.departamento.DepartamentoDAOJdbc;
 import br.com.tcc.sigar.empresa.EmpresaDAO;
 import br.com.tcc.sigar.empresa.EmpresaDAOHibernate;
 import br.com.tcc.sigar.participante.ParticipanteDAO;
